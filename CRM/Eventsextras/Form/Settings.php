@@ -47,10 +47,6 @@ class CRM_Eventsextras_Form_Settings extends CRM_Core_Form {
         E::ts($config['title']),
         array(1 => E::ts('Show'), 0 => E::ts('Hide'))
       );
-      /*$this->addYesNo(
-        $name,
-        $config['title']
-      );*/
       $this->divideConfigSections($name, $config['section']);
     }
     $this->addButtons([
