@@ -22,6 +22,6 @@
   </compatibility>
   <comments>This is a new, undeveloped module</comments>
   <civix>
-    <namespace>CRM/Eventsextras</namespace>
+    <namespace>CRM/EventsExtras</namespace>
   </civix>
 </extension>

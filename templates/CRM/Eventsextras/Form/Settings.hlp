@@ -21,10 +21,6 @@
   {ts}Show/Hide: Complete description{/ts}
 {/htxt}
 
-{htxt id="eventsextras_completed_description"}
-  {ts}Show/Hide: Complete description{/ts}
-{/htxt}
-
 {htxt id="eventsextras_include_map_event_location"}
   {ts}
   Show/Hide: Include Map to Event Location.

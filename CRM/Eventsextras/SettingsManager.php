@@ -55,4 +55,3 @@ class CRM_EventsExtras_SettingsManager {
     return $settingFields;
   }
 }
-
