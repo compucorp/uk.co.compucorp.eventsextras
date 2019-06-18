@@ -29,8 +29,8 @@
   </div>
   <h3>{ts}Front Page Settings{/ts}</h3>
   {foreach from=$frontpageConfigSection item=elementName}
-    <div class="crm-section">
-    <div class="label">{$form.$elementName.label}</div>
+    <div class="crm-section">  
+    <div class="label">{$form.$elementName.label} {help id=$form.$elementName.name}</div>
        <div class="content">
         {$form.$elementName.html}
       </div>
@@ -40,7 +40,7 @@
   <h3>{ts}Fees Settings{/ts}</h3>
   {foreach from=$feeConfigSection item=elementName}
     <div class="crm-section">
-    <div class="label">{$form.$elementName.label}</div>
+    <div class="label">{$form.$elementName.label} {help id=$form.$elementName.name}</div>
     <div class="content">
       {$form.$elementName.html}
     </div>
@@ -50,7 +50,7 @@
   <h3>{ts}Online Registration Settings{/ts}</h3>
   {foreach from=$onlineRegistrationSection item=elementName}
     <div class="crm-section">
-    <div class="label">{$form.$elementName.label}</div>
+    <div class="label">{$form.$elementName.label} {help id=$form.$elementName.name}</div>
     <div class="content">
       {$form.$elementName.html}
     </div>

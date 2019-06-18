@@ -1,0 +1,81 @@
+
+{htxt id="eventsextras_roles"}
+  {ts}
+  Show/Hide Default Role. 
+  If hide is selected, admin can set a global default from available options.
+  {/ts}
+{/htxt}
+
+{htxt id="eventsextras_participant_listing"}
+  {ts}
+  Show/Hide: Participant listing
+  If hide is selected, admin can set a global default (default to disabled)
+  {/ts}
+{/htxt}
+
+{htxt id="eventsextras_event_summary"}
+  {ts}Show/Hide: Events summary{/ts}
+{/htxt}
+
+{htxt id="eventsextras_completed_description"}
+  {ts}Show/Hide: Complete description{/ts}
+{/htxt}
+
+{htxt id="eventsextras_completed_description"}
+  {ts}Show/Hide: Complete description{/ts}
+{/htxt}
+
+{htxt id="eventsextras_include_map_event_location"}
+  {ts}
+  Show/Hide: Include Map to Event Location.
+  If hide is selected, admin can set a global default from available options
+  {/ts}
+{/htxt}
+
+{htxt id="eventsextras_public_event"}
+  {ts}
+  Show/Hide: Public Event, 
+  If hide is selected, admin can set a global default from available options
+  {/ts}
+{/htxt}
+
+{htxt id="eventsextras_currency"}
+  {ts}
+  Show/Hide: Currency.
+  if hide is selected, admin can set a global default from available options 
+  {/ts}
+{/htxt}
+
+{htxt id="eventsextras_enable_pay_later_option"}
+  {ts}
+  Show/Hide: Enable pay later option
+  if hide is selected, admin can set a global default from available options 
+  {/ts}
+{/htxt}
+
+{htxt id="eventsextras_payment_processor_selection"}
+  {ts}
+  Show/Hide: Payment Processor selection
+  if hide is selected, admin can set a global default from available options 
+  {/ts}
+{/htxt}
+
+{htxt id="eventsextras_pending_participant_expiration"}
+  {ts}Show/Hide: Pending participant expiration (hours)
+  If hide is selected, admin can set a global default from available options  
+  {/ts}
+{/htxt}
+
+{htxt id="eventsextras_allow_self_service"}
+  {ts}
+  Show/Hide: Allow self-service cancellation or transfer?
+  If hide is selected, admin can set a global default from available options
+  {/ts}  
+{/htxt}
+
+{htxt id="eventsextras_register_multiple_participants"}
+  {ts}
+  Show/Hide: Register multiple participants
+  If hide is selected, admin can set a global default from available options
+  {/ts} 
+{/htxt}
