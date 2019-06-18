@@ -27,37 +27,19 @@
   <div class="crm-submit-buttons">
     {include file="CRM/common/formButtons.tpl" location="bottom"}
   </div>
-  <h3>{ts}Front Page Settings{/ts}</h3>
-  {foreach from=$frontpageConfigSection item=elementName}
-    <div class="crm-section">  
-    <div class="label">{$form.$elementName.label} {help id=$form.$elementName.name}</div>
-       <div class="content">
-        {$form.$elementName.html}
+  {foreach from=$displaySections item=section}
+    <h3>{ts}{$section.name}{/ts}</h3>
+    {foreach from=$section.fields item=elementName}
+      <div class="crm-section">  
+      <div class="label">{$form.$elementName.label} {help id=$form.$elementName.name}</div>
+        <div class="content">
+          {$form.$elementName.html}
+        </div>
+      <div class="clear"></div>
       </div>
-    <div class="clear"></div>
-    </div>
-  {/foreach}
-  <h3>{ts}Fees Settings{/ts}</h3>
-  {foreach from=$feeConfigSection item=elementName}
-    <div class="crm-section">
-    <div class="label">{$form.$elementName.label} {help id=$form.$elementName.name}</div>
-    <div class="content">
-      {$form.$elementName.html}
-    </div>
-    <div class="clear"></div>
-    </div>
-  {/foreach}
-  <h3>{ts}Online Registration Settings{/ts}</h3>
-  {foreach from=$onlineRegistrationSection item=elementName}
-    <div class="crm-section">
-    <div class="label">{$form.$elementName.label} {help id=$form.$elementName.name}</div>
-    <div class="content">
-      {$form.$elementName.html}
-    </div>
-    <div class="clear"></div>
-    </div>
     {/foreach}
-    <div class="crm-submit-buttons">
-      {include file="CRM/common/formButtons.tpl" location="bottom"}
-    </div>
+  {/foreach}
+  <div class="crm-submit-buttons">
+    {include file="CRM/common/formButtons.tpl" location="bottom"}
+  </div>
 </div>

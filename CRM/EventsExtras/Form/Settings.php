@@ -9,30 +9,18 @@ use CRM_EventsExtras_SettingsManager as SettingsManager;
  * @see https://wiki.civicrm.org/confluence/display/CRMDOC/QuickForm+Reference
  */
 class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
-  
-   /**
-   * Contains array of names, which must be displayed
-   * in Font Page configuration section
-   *
-   * @var string[]
-   */
-  private $frontpageConfig = [];
 
   /**
    * Contains array of names, which must be displayed
-   * in fee configuration section
+   * in configuration section
    *
-   * @var string[]
+   * @var array[]
    */
-  private $feeConfig = [];
-
-  /**
-   * Contains array of names, which must be displayed
-   * in online registration configuration section
-   *
-   * @var string[]
-   */
-  private $onlineRegistrationConfig = []; 
+  private $displaySections = [
+    'front_page' => ['name' => 'Front Page Settings'],
+    'fee' => ['name' => 'Fee Settings'],
+    'online_registration' => ['name' => 'Online Registration Settings'],
+  ];
 
   public function buildQuickForm() {
     CRM_Utils_System::setTitle(E::ts('CiviEvent Extras Settings'));
@@ -48,18 +36,15 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
     $this->addButtons([
       [
         'type' => 'submit',
-        'name' => ts('Submit'),
+        'name' => E::ts('Submit'),
         'isDefault' => TRUE,
       ],
       [
         'type' => 'cancel',
-        'name' => ts('Cancel'),
+        'name' => E::ts('Cancel'),
       ],
     ]);
-
-    $this->assign('frontpageConfigSection', $this->frontpageConfig);
-    $this->assign('feeConfigSection', $this->feeConfig);
-    $this->assign('onlineRegistrationSection', $this->onlineRegistrationConfig);;
+    $this->assign('displaySections', $this->displaySections);
   }
 
   public function postProcess() {
@@ -69,9 +54,9 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
     $result = civicrm_api3('setting', 'create', $valuesToSave);
     $session = CRM_Core_Session::singleton();
     if ($result['is_error']== 0){
-      $session->setStatus(E::ts('Settings have been saved'),ts('Events Extra Settings'), 'success');
+      $session->setStatus(E::ts('Settings have been saved'),E::ts('Events Extra Settings'), 'success');
     } else{
-      $session->setStatus(E::ts('Settings could not be saved, please contact Administrator'),ts('Events Extra Settings'), 'error');
+      $session->setStatus(E::ts('Settings could not be saved, please contact Administrator'),E::ts('Events Extra Settings'), 'error');
     }
   }
 
@@ -101,15 +86,15 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
   private function assignConfigSections($name, $section) {
     switch ($section) {
       case 'front_page':
-        $this->frontpageConfig[] = $name;
+        $this->displaySections['front_page']['fields'][] = $name;
         break;
 
       case 'fee':
-        $this->feeConfig[] = $name;
+        $this->displaySections['fee']['fields'][] = $name;
         break;
 
       case 'online_registration':
-        $this->onlineRegistrationConfig[] = $name;
+        $this->displaySections['online_registration']['fields'][] = $name;
         break;
     }
   }
