@@ -13,6 +13,7 @@ class CRM_EventsExtras_SettingsManager {
     'eventsextras_participant_listing',
     'eventsextras_event_summary',
     'eventsextras_completed_description',
+    'eventsextras_include_map_event_location',
     'eventsextras_public_event',
     'eventsextras_currency',
     'eventsextras_enable_pay_later_option',
@@ -53,9 +54,5 @@ class CRM_EventsExtras_SettingsManager {
     }
     return $settingFields;
   }
-
-
-
-    
 }
 
