@@ -34,7 +34,6 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
    */
   private $onlineRegistrationConfig = []; 
 
-
   public function buildQuickForm() {
     CRM_Utils_System::setTitle(E::ts('CiviEvent Extras Settings'));
     $configFields = SettingsManager::getConfigFields();
@@ -69,7 +68,7 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
     $valuesToSave = array_intersect_key($submittedValues, $configFields);
     $result = civicrm_api3('setting', 'create', $valuesToSave);
     $session = CRM_Core_Session::singleton();
-    if( $result['is_error']== 0){
+    if ($result['is_error']== 0){
       $session->setStatus(E::ts('Settings have been saved'),ts('Events Extra Settings'), 'success');
     } else{
       $session->setStatus(E::ts('Settings could not be saved, please contact Administrator'),ts('Events Extra Settings'), 'error');
