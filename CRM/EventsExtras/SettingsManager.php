@@ -5,6 +5,13 @@
  */
 class CRM_EventsExtras_SettingsManager {
 
+  /**
+   * Constants for setting sections
+   */
+  const EVENT_INFO = 'event_info';
+  const EVENT_FEE = 'event_fee';
+  const EVENT_REGISTRATION = 'event_online_registration';
+
     /** 
     * Constants value for settings name
     */
@@ -22,6 +29,18 @@ class CRM_EventsExtras_SettingsManager {
     'eventsextras_allow_self_service',
     'eventsextras_register_multiple_participants',
   ];
+
+   /**
+   * Gets the settings Value
+   *
+   * @return array
+  */
+  public static function getSettingsValue(){
+    return civicrm_api3('setting', 'get', [
+      'return' => self::SETTING_FIELDS,
+      'sequential' => 1,
+    ])['values'][0];
+  }
 
   /**
    * Gets the extension configuration fields
