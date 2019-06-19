@@ -14,8 +14,11 @@ return [
    'is_domain' => 1,
    'is_contact' => 0,
    'description' => ts('Show/Hide Default Role'),
-   'help_text' => 'help ka',
-   'section' => 'front_page',
+   'help_text' => '',
+   'extra_attributes' => [
+    'section' => 'event_info',
+    'css_class' => 'crm-event-manage-eventinfo-form-block-default_role_id',
+  ],
  ],
  'eventsextras_participant_listing' => [
    'name' => 'eventsextras_participant_listing',
@@ -28,8 +31,11 @@ return [
    'is_domain' => 1,
    'is_contact' => 0,
    'description' => ts('Show/Hide Participant listing'),
-   'help_text' => 'help 2',
-   'section' => 'front_page',
+   'help_text' => '',
+   'extra_attributes' => [
+    'section' => 'event_info',
+    'css_class' => 'crm-event-manage-eventinfo-form-block-participant_listing_id',
+  ],
  ],
  'eventsextras_event_summary' => [
    'name' => 'eventsextras_event_summary',
@@ -43,10 +49,13 @@ return [
    'is_contact' => 0,
    'description' => ts('Show/Hide Event Summary'),
    'help_text' => '',
-   'section' => 'front_page',
+   'extra_attributes' => [
+    'section' => 'event_info',
+    'css_class' => 'crm-event-manage-eventinfo-form-block-summary',
+  ],
  ],
  'eventsextras_completed_description' => [
-   'name' => 'eventsExtrasCompleteDescription',
+   'name' => 'eventsextras_event_summary',
    'title' => ts('Complete Description'),
    'type' => 'Boolean',
    'quick_form_type' => 'YesNo',
@@ -57,7 +66,10 @@ return [
    'is_contact' => 0,
    'description' => ts('Show/Hide Complete Description'),
    'help_text' => '',
-   'section' => 'front_page',
+   'extra_attributes' => [
+    'section' => 'event_info',
+    'css_class' => 'crm-event-manage-eventinfo-form-block-description',
+  ],
  ],
  'eventsextras_include_map_event_location' => [
    'name' => 'eventsextras_include_map_event_location',
@@ -71,7 +83,10 @@ return [
    'is_contact' => 0,
    'description' => ts('Show/Hide Include Map to Event Location'),
    'help_text' => '',
-   'section' => 'front_page',
+   'extra_attributes' => [
+    'section' => 'event_info',
+    'css_class' => 'crm-event-manage-eventinfo-form-block-is_map',
+  ],
  ],
  'eventsextras_public_event' => [
    'name' => 'eventsextras_public_event',
@@ -85,7 +100,10 @@ return [
    'is_contact' => 0,
    'description' => ts('Show/Hide Public Event'),
    'help_text' => '',
-   'section' => 'front_page',
+   'extra_attributes' => [
+    'section' => 'event_info',
+    'css_class' => 'crm-event-manage-eventinfo-form-block-is_public',
+  ],
  ],
  'eventsextras_currency' => [
    'name' => 'eventsextras_currency',
@@ -99,7 +117,10 @@ return [
    'is_contact' => 0,
    'description' => ts('Show/Hide Currency'),
    'help_text' => '',
-   'section' => 'fee',
+   'extra_attributes' => [
+    'section' => 'event_fee',
+    'css_class' => 'crm-event-manage-fee-form-block-currency',
+  ],
  ],
  'eventsextras_enable_pay_later_option' => [
    'name' => 'eventsextras_enable_pay_later_option',
@@ -113,7 +134,10 @@ return [
    'is_contact' => 0,
    'description' => ts('Show/Hide Enable pay later option'),
    'help_text' => '',
-   'section' => 'fee',
+   'extra_attributes' => [
+    'section' => 'event_fee',
+    'css_class' => 'crm-event-manage-fee-form-block-is_pay_later',
+  ],
  ],
  'eventsextras_payment_processor_selection' => [
    'name' => 'eventsextras_payment_processor_selection',
@@ -127,7 +151,10 @@ return [
    'is_contact' => 0,
    'description' => ts('Show/Hide Payment Processor Selection'),
    'help_text' => '',
-   'section' => 'fee',
+   'extra_attributes' => [
+    'section' => 'event_fee',
+    'css_class' => 'crm-event-manage-fee-form-block-payment_processor',
+  ],
  ],
  'eventsextras_pending_participant_expiration' => [
    'name' => 'eventsextras_pending_participant_expiration',
@@ -141,7 +168,10 @@ return [
    'is_contact' => 0,
    'description' => ts('Show/Hide Pending Participant Expiration'),
    'help_text' => '',
-   'section' => 'online_registration',
+   'extra_attributes' => [
+    'section' => 'event_online_registration',
+    'css_class' => 'crm-event-manage-registration-form-block-expiration_time',
+  ],
  ],
  'eventsextras_allow_self_service' => [
    'name' => 'eventsextras_allow_self_service',
@@ -155,7 +185,10 @@ return [
    'is_contact' => 0,
    'description' => ts('Show/Hide Allow self-service cancellation or transfer?'),
    'help_text' => '',
-   'section' => 'online_registration',
+   'extra_attributes' => [
+    'section' => 'event_online_registration',
+    'css_class' => 'crm-event-manage-registration-form-block-selfcancelxfer',
+  ],
  ],
  'eventsextras_register_multiple_participants' => [
    'name' => 'eventsextras_register_multiple_participants',
@@ -169,6 +202,9 @@ return [
    'is_contact' => 0,
    'description' => ts('Show/Hide Register multiple participants?'),
    'help_text' => '',
-   'section' => 'online_registration',
+   'extra_attributes' => [
+    'section' => 'event_online_registration',
+    'css_class' => 'crm-event-manage-registration-form-block-is_multiple_registrations',
+  ],
  ],
 ];
