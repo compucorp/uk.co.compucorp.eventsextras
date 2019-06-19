@@ -1,7 +1,7 @@
 <?php
 
 require_once 'eventsextras.civix.php';
-use CRM_Eventsextras_ExtensionUtil as E;
+use CRM_EventsExtras_ExtensionUtil as E;
 
 /**
  * Implements hook_civicrm_config().

@@ -6,10 +6,10 @@
  * The ExtensionUtil class provides small stubs for accessing resources of this
  * extension.
  */
-class CRM_Eventsextras_ExtensionUtil {
+class CRM_EventsExtras_ExtensionUtil {
   const SHORT_NAME = "eventsextras";
   const LONG_NAME = "uk.co.compucorp.eventsextras";
-  const CLASS_PREFIX = "CRM_Eventsextras";
+  const CLASS_PREFIX = "CRM_EventsExtras";
 
   /**
    * Translate a string using the extension's domain.
@@ -77,7 +77,7 @@ class CRM_Eventsextras_ExtensionUtil {
 
 }
 
-use CRM_Eventsextras_ExtensionUtil as E;
+use CRM_EventsExtras_ExtensionUtil as E;
 
 /**
  * (Delegated) Implements hook_civicrm_config().
@@ -205,14 +205,14 @@ function _eventsextras_civix_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL)
 }
 
 /**
- * @return CRM_Eventsextras_Upgrader
+ * @return CRM_EventsExtras_Upgrader
  */
 function _eventsextras_civix_upgrader() {
   if (!file_exists(__DIR__ . '/CRM/Eventsextras/Upgrader.php')) {
     return NULL;
   }
   else {
-    return CRM_Eventsextras_Upgrader_Base::instance();
+    return CRM_EventsExtras_Upgrader_Base::instance();
   }
 }
 
