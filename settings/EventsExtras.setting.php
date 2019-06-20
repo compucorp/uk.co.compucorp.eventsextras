@@ -54,8 +54,8 @@ return [
     'css_class' => 'crm-event-manage-eventinfo-form-block-summary',
   ],
  ],
- 'eventsextras_completed_description' => [
-   'name' => 'eventsextras_event_summary',
+ 'eventsextras_event_description' => [
+   'name' => 'eventsextras_event_description',
    'title' => ts('Complete Description'),
    'type' => 'Boolean',
    'quick_form_type' => 'YesNo',
