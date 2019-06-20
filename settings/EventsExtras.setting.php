@@ -55,7 +55,7 @@ return [
   ],
  ],
  'eventsextras_completed_description' => [
-   'name' => 'eventsextras_event_summary',
+   'name' => 'eventsextras_event_description',
    'title' => ts('Complete Description'),
    'type' => 'Boolean',
    'quick_form_type' => 'YesNo',
