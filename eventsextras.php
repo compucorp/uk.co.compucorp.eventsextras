@@ -11,15 +11,15 @@ use CRM_EventsExtras_SettingsManager as SettingsManager;
  */
 function eventsextras_civicrm_buildForm($formName, &$form){
   if ($formName === 'CRM_Event_Form_ManageEvent_EventInfo'){
-    $eventInfoHook = new CRM_EventsExtras_Hook_BuildForm_EventInfo(SettingsManager::EVENT_INFO);
+    $eventInfoHook = new CRM_EventsExtras_Hook_BuildForm_EventInfo();
     $eventInfoHook->buildForm($form);
   } 
   if ($formName === 'CRM_Event_Form_ManageEvent_Fee'){
-    $eventFeeHook = new CRM_EventsExtras_Hook_BuildForm_EventFee(SettingsManager::EVENT_FEE);
+    $eventFeeHook = new CRM_EventsExtras_Hook_BuildForm_EventFee();
     $eventFeeHook->buildForm($form);
   } 
   if ($formName === 'CRM_Event_Form_ManageEvent_Registration'){
-    $eventFeeRegistration = new CRM_EventsExtras_Hook_BuildForm_EventRegistration(SettingsManager::EVENT_REGISTRATION);
+    $eventFeeRegistration = new CRM_EventsExtras_Hook_BuildForm_EventRegistration();
     $eventFeeRegistration->buildForm($form);
   }
 }

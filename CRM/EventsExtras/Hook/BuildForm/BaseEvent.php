@@ -6,7 +6,7 @@ use CRM_EventsExtras_SettingsManager as SettingsManager;
 /**
  * Abstract class for BuildForm Hook
  */
-abstract class CRM_EventsExtras_Hook_BuildForm {
+abstract class CRM_EventsExtras_Hook_BuildForm_BaseEvent {
 
   /**
    * Event tab to display on the form 
@@ -21,16 +21,13 @@ abstract class CRM_EventsExtras_Hook_BuildForm {
    */
   protected function __construct($eventTab){
     $this->eventTab = $eventTab;
-    $templatePath = E::path() . '/templates/CRM/EventsExtras/Form/EventTabs.tpl';
-    CRM_Core_Region::instance('page-body')->add([
-      'template' => "{$templatePath}"
-    ]);
+    $this->addEventTabTemplate();
   }
 
   /**
    * fuction to hide fields based on settings
    *
-   * @param array $$form
+   * @param array $form
    *
    */
   protected function hideField(CRM_Event_Form_ManageEvent &$form){
@@ -45,5 +42,12 @@ abstract class CRM_EventsExtras_Hook_BuildForm {
       }
     }
     $form->assign('hiddenCssClasses', $hiddenFields);
+  }
+
+  private function addEventTabTemplate(){
+    $templatePath = E::path() . '/templates/CRM/EventsExtras/Form/EventTabs.tpl';
+    CRM_Core_Region::instance('page-body')->add([
+      'template' => "{$templatePath}"
+    ]);
   }
 }
