@@ -1,4 +1,6 @@
 <?php
+
+use CRM_EventsExtras_SettingsManager as SettingsManager;
 /*
 * Settings metadata file
 */
@@ -16,7 +18,7 @@ return [
    'description' => ts('Show/Hide Default Role'),
    'help_text' => '',
    'extra_attributes' => [
-    'section' => 'event_info',
+    'section' => SettingsManager::EVENT_INFO,
     'css_class' => 'crm-event-manage-eventinfo-form-block-default_role_id',
   ],
  ],
@@ -33,7 +35,7 @@ return [
    'description' => ts('Show/Hide Participant listing'),
    'help_text' => '',
    'extra_attributes' => [
-    'section' => 'event_info',
+    'section' => SettingsManager::EVENT_INFO,
     'css_class' => 'crm-event-manage-eventinfo-form-block-participant_listing_id',
   ],
  ],
@@ -50,7 +52,7 @@ return [
    'description' => ts('Show/Hide Event Summary'),
    'help_text' => '',
    'extra_attributes' => [
-    'section' => 'event_info',
+    'section' => SettingsManager::EVENT_INFO,
     'css_class' => 'crm-event-manage-eventinfo-form-block-summary',
   ],
  ],
@@ -67,7 +69,7 @@ return [
    'description' => ts('Show/Hide Complete Description'),
    'help_text' => '',
    'extra_attributes' => [
-    'section' => 'event_info',
+    'section' => SettingsManager::EVENT_INFO,
     'css_class' => 'crm-event-manage-eventinfo-form-block-description',
   ],
  ],
@@ -84,7 +86,7 @@ return [
    'description' => ts('Show/Hide Include Map to Event Location'),
    'help_text' => '',
    'extra_attributes' => [
-    'section' => 'event_info',
+    'section' => SettingsManager::EVENT_INFO,
     'css_class' => 'crm-event-manage-eventinfo-form-block-is_map',
   ],
  ],
@@ -101,7 +103,7 @@ return [
    'description' => ts('Show/Hide Public Event'),
    'help_text' => '',
    'extra_attributes' => [
-    'section' => 'event_info',
+    'section' => SettingsManager::EVENT_INFO,
     'css_class' => 'crm-event-manage-eventinfo-form-block-is_public',
   ],
  ],
@@ -118,7 +120,7 @@ return [
    'description' => ts('Show/Hide Currency'),
    'help_text' => '',
    'extra_attributes' => [
-    'section' => 'event_fee',
+    'section' => SettingsManager::EVENT_FEE,
     'css_class' => 'crm-event-manage-fee-form-block-currency',
   ],
  ],
@@ -135,7 +137,7 @@ return [
    'description' => ts('Show/Hide Enable pay later option'),
    'help_text' => '',
    'extra_attributes' => [
-    'section' => 'event_fee',
+    'section' => SettingsManager::EVENT_FEE,
     'css_class' => 'crm-event-manage-fee-form-block-is_pay_later',
   ],
  ],
@@ -152,7 +154,7 @@ return [
    'description' => ts('Show/Hide Payment Processor Selection'),
    'help_text' => '',
    'extra_attributes' => [
-    'section' => 'event_fee',
+    'section' => SettingsManager::EVENT_FEE,
     'css_class' => 'crm-event-manage-fee-form-block-payment_processor',
   ],
  ],
@@ -169,7 +171,7 @@ return [
    'description' => ts('Show/Hide Pending Participant Expiration'),
    'help_text' => '',
    'extra_attributes' => [
-    'section' => 'event_online_registration',
+    'section' => SettingsManager::EVENT_REGISTRATION,
     'css_class' => 'crm-event-manage-registration-form-block-expiration_time',
   ],
  ],
@@ -186,7 +188,7 @@ return [
    'description' => ts('Show/Hide Allow self-service cancellation or transfer?'),
    'help_text' => '',
    'extra_attributes' => [
-    'section' => 'event_online_registration',
+    'section' => SettingsManager::EVENT_REGISTRATION,
     'css_class' => 'crm-event-manage-registration-form-block-selfcancelxfer',
   ],
  ],
@@ -203,8 +205,9 @@ return [
    'description' => ts('Show/Hide Register multiple participants?'),
    'help_text' => '',
    'extra_attributes' => [
-    'section' => 'event_online_registration',
+    'section' => SettingsManager::EVENT_REGISTRATION,
     'css_class' => 'crm-event-manage-registration-form-block-is_multiple_registrations',
   ],
  ],
 ];
+

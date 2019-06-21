@@ -61,7 +61,7 @@ class CRM_EventsExtras_SettingsManager {
    *
    * @return array
    */
-  public static function getConfigFields() {
+  public static function getConfigFields($section = NULL) {
     $configFields = self::fetchSettingFields();
     if (!isset($configFields) || empty($configFields)) {
       $result = civicrm_api3('System', 'flush');
@@ -69,8 +69,15 @@ class CRM_EventsExtras_SettingsManager {
         $configFields =  self::fetchSettingFields();
       }
     }
-
+    if ($section != NULL){ //if section is passed, only return settings in section
+      foreach ($configFields as $field){
+        if ($field['extra_attributes']['section'] != $section) {
+          unset($configFields[$field['name']]);
+        }
+      }
+    }
     return $configFields;
+
   }
 
   /**
@@ -88,3 +95,4 @@ class CRM_EventsExtras_SettingsManager {
     return $settingFields;
   }
 }
+
