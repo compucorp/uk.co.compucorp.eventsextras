@@ -17,17 +17,31 @@ class CRM_EventsExtras_SettingsManager {
     */
    const SETTING_FIELDS = [
     'eventsextras_roles',
+    'eventsextras_roles_default',
     'eventsextras_participant_listing',
+    'eventsextras_participant_listing_default',
     'eventsextras_event_summary',
     'eventsextras_event_description',
     'eventsextras_include_map_event_location',
+    'eventsextras_include_map_event_location_default',
     'eventsextras_public_event',
+    'eventsextras_public_event_default',
     'eventsextras_currency',
-    'eventsextras_enable_pay_later_option',
+    'eventsextras_currency_default',
     'eventsextras_payment_processor_selection',
+    'eventsextras_payment_processor_selection_default',
+    'eventsextras_enable_pay_later_option',
+    'eventsextras_enable_pay_later_option_default',
+    'eventsextras_enable_pay_later_option_default_label',
+    'eventsextras_enable_pay_later_option_default_instruction',
+    'eventsextras_enable_pay_later_option_default_billing_address_required',
     'eventsextras_pending_participant_expiration',
+    'eventsextras_pending_participant_expiration_default',
     'eventsextras_allow_self_service',
+    'eventsextras_allow_self_service_default',
+    'eventsextras_allow_self_service_default_time_limit',
     'eventsextras_register_multiple_participants',
+    'eventsextras_register_multiple_participants_default_maxinum_participant'
   ];
 
    /**

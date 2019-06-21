@@ -26,15 +26,28 @@
 <div class="crm-block crm-form-block crm-events-extras-form-block">
   <div class="crm-submit-buttons">
     {include file="CRM/common/formButtons.tpl" location="bottom"}
-  </div>
+  </div> 
   {foreach from=$displaySections item=section}
     <h3>{ts}{$section.name}{/ts}</h3>
     {foreach from=$section.fields item=elementName}
       <div class="crm-section">  
-      <div class="label">{$form.$elementName.label} {help id=$form.$elementName.name}</div>
-        <div class="content">
+         {if $form.$elementName.type neq 'checkbox'}
+          <div class="label">
+            {$form.$elementName.label} 
+            {if !$parentSettings.$elementName} {help id=$form.$elementName.name}
+            {/if}
+         </div>
+        {/if}  
+      <div class="content">
           {$form.$elementName.html}
-        </div>
+          {if $form.$elementName.type eq 'checkbox'}
+            {$form.$elementName.label}{if !$parentSettings.$elementName} {help id=$form.$elementName.name}
+          {/if}
+          {if !$parentSettings.$elementName}
+            <div class="description">{$settingsDescription.$elementName}</div>  
+          {/if}
+        {/if} 
+      </div>
       <div class="clear"></div>
       </div>
     {/foreach}
