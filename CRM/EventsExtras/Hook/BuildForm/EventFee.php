@@ -27,5 +27,6 @@ class CRM_EventsExtras_Hook_BuildForm_EventFee extends CRM_EventsExtras_Hook_Bui
     }
     $this->hideField($form);
   }
-  
+
 }
+

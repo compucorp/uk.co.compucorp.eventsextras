@@ -29,3 +29,4 @@ class CRM_EventsExtras_Hook_BuildForm_EventRegistration extends CRM_EventsExtras
   }
 
 }
+
