@@ -5,6 +5,13 @@
  */
 class CRM_EventsExtras_SettingsManager {
 
+  /**
+   * Constants for setting sections
+   */
+  const EVENT_INFO = 'event_info';
+  const EVENT_FEE = 'event_fee';
+  const EVENT_REGISTRATION = 'event_online_registration';
+
     /** 
     * Constants value for settings name
     */
@@ -12,7 +19,7 @@ class CRM_EventsExtras_SettingsManager {
     'eventsextras_roles',
     'eventsextras_participant_listing',
     'eventsextras_event_summary',
-    'eventsextras_completed_description',
+    'eventsextras_event_description',
     'eventsextras_include_map_event_location',
     'eventsextras_public_event',
     'eventsextras_currency',
@@ -23,12 +30,24 @@ class CRM_EventsExtras_SettingsManager {
     'eventsextras_register_multiple_participants',
   ];
 
+   /**
+   * Gets the settings Value
+   *
+   * @return array
+  */
+  public static function getSettingsValue(){
+    return civicrm_api3('setting', 'get', [
+      'return' => self::SETTING_FIELDS,
+      'sequential' => 1,
+    ])['values'][0];
+  }
+
   /**
    * Gets the extension configuration fields
    *
    * @return array
    */
-  public static function getConfigFields() {
+  public static function getConfigFields($section = NULL) {
     $configFields = self::fetchSettingFields();
     if (!isset($configFields) || empty($configFields)) {
       $result = civicrm_api3('System', 'flush');
@@ -36,8 +55,15 @@ class CRM_EventsExtras_SettingsManager {
         $configFields =  self::fetchSettingFields();
       }
     }
-
+    if ($section != NULL){ //if section is passed, only return settings in section
+      foreach ($configFields as $field){
+        if ($field['extra_attributes']['section'] != $section) {
+          unset($configFields[$field['name']]);
+        }
+      }
+    }
     return $configFields;
+
   }
 
   /**
@@ -55,3 +81,4 @@ class CRM_EventsExtras_SettingsManager {
     return $settingFields;
   }
 }
+

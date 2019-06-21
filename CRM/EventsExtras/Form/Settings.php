@@ -17,9 +17,9 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
    * @var array[]
    */
   private $displaySections = [
-    'front_page' => ['name' => 'Front Page Settings'],
-    'fee' => ['name' => 'Fee Settings'],
-    'online_registration' => ['name' => 'Online Registration Settings'],
+    SettingsManager::EVENT_INFO => ['name' => 'Event Info Settings'],
+    SettingsManager::EVENT_FEE => ['name' => 'Fee Settings'],
+    SettingsManager::EVENT_REGISTRATION => ['name' => 'Online Registration Settings'],
   ];
 
   public function buildQuickForm() {
@@ -31,7 +31,7 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
         E::ts($config['title']),
           [1 => E::ts('Show'), 0 => E::ts('Hide')]
       );
-      $this->assignConfigSections($name, $config['section']);
+      $this->assignConfigSections($name, $config['extra_attributes']['section']);
     }
     $this->addButtons([
       [
@@ -85,16 +85,16 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
    */
   private function assignConfigSections($name, $section) {
     switch ($section) {
-      case 'front_page':
-        $this->displaySections['front_page']['fields'][] = $name;
+      case SettingsManager::EVENT_INFO:
+        $this->displaySections[SettingsManager::EVENT_INFO]['fields'][] = $name;
         break;
 
-      case 'fee':
-        $this->displaySections['fee']['fields'][] = $name;
+      case SettingsManager::EVENT_FEE:
+        $this->displaySections[SettingsManager::EVENT_FEE]['fields'][] = $name;
         break;
 
-      case 'online_registration':
-        $this->displaySections['online_registration']['fields'][] = $name;
+      case SettingsManager::EVENT_REGISTRATION:
+        $this->displaySections[SettingsManager::EVENT_REGISTRATION]['fields'][] = $name;
         break;
     }
   }

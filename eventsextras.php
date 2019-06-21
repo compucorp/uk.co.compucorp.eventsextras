@@ -2,6 +2,23 @@
 
 require_once 'eventsextras.civix.php';
 use CRM_EventsExtras_ExtensionUtil as E;
+use CRM_EventsExtras_SettingsManager as SettingsManager;
+
+/**
+ * Implements hook_civicrm_buildForm().
+ *
+ * @link hhttps://docs.civicrm.org/dev/en/latest/hooks/hook_civicrm_buildForm/
+ */
+function eventsextras_civicrm_buildForm($formName, &$form){
+  $listeners = [
+    new CRM_EventsExtras_Hook_BuildForm_EventInfo(),
+    new CRM_EventsExtras_Hook_BuildForm_EventFee(),
+    new CRM_EventsExtras_Hook_BuildForm_EventRegistration(),
+  ];
+  foreach ($listeners as $currentListener) {
+    $currentListener->handle($formName, $form);
+  }
+}
 
 /**
  * Implements hook_civicrm_config().
