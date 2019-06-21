@@ -14,6 +14,14 @@ abstract class CRM_EventsExtras_Hook_BuildForm_BaseEvent {
   protected $eventTab;
 
   /**
+   * Hides options on the localisation page
+   *
+   * @param string $formName
+   * @param CRM_Core_Form $form
+   */
+  abstract function handle($formName, &$form);
+
+  /**
    * Constractor for BuildForm class
    * 
    * @param string $eventTab
@@ -24,19 +32,6 @@ abstract class CRM_EventsExtras_Hook_BuildForm_BaseEvent {
     $this->addEventTabTemplate();
   }
 
-   /**
-   * Hides options on the localisation page
-   *
-   * @param string $formName
-   * @param CRM_Core_Form $form
-   */
-  public function handle($formName, &$form) {
-    if (!$this->shouldHandle($formName)) {
-      return;
-    }
-    
-  }
-  
   /**
    * Checks if the hook should be handled.
    *
