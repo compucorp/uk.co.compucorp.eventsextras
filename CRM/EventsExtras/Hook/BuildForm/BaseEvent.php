@@ -25,7 +25,7 @@ abstract class CRM_EventsExtras_Hook_BuildForm_BaseEvent {
   }
 
   /**
-   * Hides options on the localisation page
+   * Hides options on the page
    *
    * @param string $formName
    * @param CRM_Core_Form $form
@@ -44,7 +44,6 @@ abstract class CRM_EventsExtras_Hook_BuildForm_BaseEvent {
     if ($formName === $formClass) {
       return TRUE;
     }
-    
     return FALSE;
   }
 
@@ -60,9 +59,7 @@ abstract class CRM_EventsExtras_Hook_BuildForm_BaseEvent {
     $hiddenFields = [];
     foreach ($configFields as $config) {
      if ($settingsValue[$config['name']] == 0){
-        if  ($config['extra_attributes']['section'] == $this->eventTab){
-           $hiddenFields[] = $config['extra_attributes']['css_class'];
-        }
+        $hiddenFields[] = $config['extra_attributes']['css_class'];
       }
     }
     $form->assign('hiddenCssClasses', $hiddenFields);
