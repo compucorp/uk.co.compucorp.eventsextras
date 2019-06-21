@@ -72,3 +72,4 @@ abstract class CRM_EventsExtras_Hook_BuildForm_BaseEvent {
     ]);
   }
 }
+
