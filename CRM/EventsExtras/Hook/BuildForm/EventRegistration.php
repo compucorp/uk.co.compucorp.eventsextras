@@ -16,7 +16,7 @@ class CRM_EventsExtras_Hook_BuildForm_EventRegistration extends CRM_EventsExtras
   }
 
   /**
-   * Hides options on the Event Info page
+   * Hides options on the Event Registration page
    *
    * @param string $formName
    * @param CRM_Event_Form_ManageEvent_Registration $form
