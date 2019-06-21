@@ -15,11 +15,16 @@ class CRM_EventsExtras_Hook_BuildForm_EventInfo extends CRM_EventsExtras_Hook_Bu
     parent::__construct(SettingsManager::EVENT_INFO);
   }
 
-  /**
-  *
-  * @param \CRM_Event_Form_ManageEvent_EventInfo $form
-  */
-  public function buildForm(CRM_Event_Form_ManageEvent_EventInfo &$form) {
+   /**
+   * Hides options on the Event Info page
+   *
+   * @param string $formName
+   * @param CRM_Event_Form_ManageEvent_EventInfo $form
+   */
+  public function handle($formName, &$form) {
+    if (!$this->shouldHandle($formName, CRM_Event_Form_ManageEvent_EventInfo::class)) {
+      return;
+    }
     $this->hideField($form);
   }
 

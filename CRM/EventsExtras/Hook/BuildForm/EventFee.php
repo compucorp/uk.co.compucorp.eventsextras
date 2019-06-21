@@ -16,10 +16,15 @@ class CRM_EventsExtras_Hook_BuildForm_EventFee extends CRM_EventsExtras_Hook_Bui
   }
 
   /**
-  *
-  * @param \CRM_Event_Form_ManageEvent_Fee $form
-  */
-  public function buildForm(CRM_Event_Form_ManageEvent_Fee &$form) {
+   * Hides options on the Event Fee page
+   *
+   * @param string $formName
+   * @param CRM_Event_Form_ManageEvent_Fee $form
+   */
+  public function handle($formName, &$form) {
+    if (!$this->shouldHandle($formName, CRM_Event_Form_ManageEvent_Fee::class)) {
+      return;
+    }
     $this->hideField($form);
   }
 

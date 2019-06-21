@@ -24,6 +24,39 @@ abstract class CRM_EventsExtras_Hook_BuildForm_BaseEvent {
     $this->addEventTabTemplate();
   }
 
+   /**
+   * Hides options on the localisation page
+   *
+   * @param string $formName
+   * @param CRM_Core_Form $form
+   */
+  public function handle($formName, &$form) {
+    if (!$this->shouldHandle($formName)) {
+      return;
+    }
+    
+  }
+  
+  /**
+   * Checks if the hook should be handled.
+   *
+   * @param string $formName
+   * @param class $formClass
+   *
+   * @return bool
+   */
+  protected function shouldHandle($formName, $formClass) {
+    if ($formName === $formClass) {
+      return TRUE;
+    }
+    
+    return FALSE;
+  }
+
+  
+
+
+  
   /**
    * fuction to hide fields based on settings
    *
