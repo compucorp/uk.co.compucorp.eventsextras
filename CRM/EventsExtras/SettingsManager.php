@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * Helps manage settings for the extension.
@@ -12,7 +12,7 @@ class CRM_EventsExtras_SettingsManager {
   const EVENT_FEE = 'event_fee';
   const EVENT_REGISTRATION = 'event_online_registration';
 
-    /** 
+    /**
     * Constants value for settings name
     */
    const SETTING_FIELDS = [
@@ -43,6 +43,18 @@ class CRM_EventsExtras_SettingsManager {
     'eventsextras_register_multiple_participants',
     'eventsextras_register_multiple_participants_default_maxinum_participant'
   ];
+
+   /**
+   * Gets the settings Value
+   *
+   * @return array
+  */
+  public static function getSettingValue($setting){
+    return civicrm_api3('setting', 'get', [
+      'return' => $setting,
+      'sequential' => 1,
+    ])['values'][0];
+  }
 
    /**
    * Gets the settings Value
@@ -87,7 +99,7 @@ class CRM_EventsExtras_SettingsManager {
    */
   private static function fetchSettingFields() {
     $settingFields = [];
-    foreach (self::SETTING_FIELDS  as $name) { 
+    foreach (self::SETTING_FIELDS  as $name) {
         $settingFields[$name] = civicrm_api3('setting', 'getfields',[
             'filters' => [ 'name' => $name],
         ])['values'][$name];
