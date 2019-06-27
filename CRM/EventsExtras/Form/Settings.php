@@ -32,11 +32,11 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
     foreach ($configFields as $name => $config) {
       if(!array_key_exists('parent_setting', $config['extra_attributes'])){
         $this->addRadio(
-          $name, 
-          E::ts($config['title']), 
+          $name,
+          E::ts($config['title']),
           [1 => E::ts('Show'), 0 => E::ts('Hide')]
         );
-        $this->parentSettings[$config['name']] = TRUE; 
+        $this->parentSettings[$config['name']] = TRUE;
       } else { //handle default setting form
         if ($config['html_type'] == 'select') {
           $this->generateDefaultSelectList($config);
@@ -79,7 +79,7 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
   private function generatePaymentProcessorElement($setting){
     $paymentProcessor = CRM_Core_PseudoConstant::paymentProcessor();
     $this->addCheckBox(
-      $setting['name'], 
+      $setting['name'],
       E::ts($setting['title']),
       array_flip($paymentProcessor),
       NULL, NULL, NULL, NULL,
@@ -116,7 +116,7 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
         'sequential' => 1,
         'name' =>  $setting['pseudoconstant']['optionGroupName'],
         'api.OptionValue.get' => ['
-          option_group_id' => "id", 
+          option_group_id' => "id",
           'return' => ['value', 'label']
         ]
       ])['values'][0]['api.OptionValue.get']['values'];
@@ -124,7 +124,7 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
         $options[$value['value']] = $value['label'];
       }
     } else {  // for default maxinum participant
-      foreach (range(1, 9) as $value){ 
+      foreach (range(1, 9) as $value){
         $options[$value] = $value;
       }
     }
@@ -147,7 +147,6 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
     $defaults = [];
     $currentValues = civicrm_api3('setting', 'get',
       ['return' => array_keys(SettingsManager::getConfigFields())]);
-    $defaults = [];
     $domainID = CRM_Core_Config::domainID();
     foreach ($currentValues['values'][$domainID] as $name => $value) {
       $defaults[$name] = $value;
