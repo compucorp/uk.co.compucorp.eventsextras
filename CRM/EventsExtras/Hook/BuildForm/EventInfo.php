@@ -26,6 +26,23 @@ class CRM_EventsExtras_Hook_BuildForm_EventInfo extends CRM_EventsExtras_Hook_Bu
       return;
     }
     $this->hideField($form);
+    $this->buildForm($formName, $form);
+  }
+
+  private function buildForm($formName, &$form) {
+   $this->setDefaults($form);
+  }
+
+  private function setDefaults(&$form){
+    $defaults = [];
+    $role = SettingsManager::SETTING_FIELDS['ROLES'];
+    $roleDefault = SettingsManager::SETTING_FIELDS['ROLES_DEFAULT'];
+    $settings = [$role, $roleDefault];
+    $settingValues = SettingsManager::getSettingsValue($settings);
+    if ($settingValues[$role] == 0){
+      $defaults['payment_processor'] = $settingValues[$roleDefault];
+    }
+    $form->setDefaults($defaults);
   }
 
 }
