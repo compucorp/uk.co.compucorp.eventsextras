@@ -53,8 +53,7 @@ return [
  'eventsextras_include_map_event_location_default' => [
   'name' => 'eventsextras_include_map_event_location_default',
   'title' => ts('Set Default Include Map to Event Location'),
-  'type' => 'Integer',
-  'quick_form_type' => 'Element',
+  'type' => 'String',
   'default' => '',
   'html_type' => 'checkbox',
   'add' => '1.0',
@@ -71,9 +70,8 @@ return [
 'eventsextras_public_event_default' => [
   'name' => 'eventsextras_public_event_default',
   'title' => ts('Set Default Public Event'),
-  'type' => 'Integer',
-  'quick_form_type' => 'Element',
-  'default' => '',
+  'type' => 'String',
+  'default' => 0,
   'html_type' => 'checkbox',
   'add' => '1.0',
   'is_domain' => 1,
@@ -105,7 +103,7 @@ return [
     'section' => SettingsManager::EVENT_FEE,
     'parent_setting' => 'eventsextras_currency',
     'class' => 'crm-select2',
-    'placeholder' => ts('--Select--'),  
+    'placeholder' => ts('--Select--'),
   ],
  ],
  'eventsextras_payment_processor_selection_default' => [
@@ -113,18 +111,18 @@ return [
   'title' => ts('Set Default Payment Processor Selection'),
   'type' => 'String',
   'quick_form_type' => 'Checkboxes',
-  'default' => TRUE,
+  'default' => '',
   'html_type' => 'checkboxes',
   'add' => '1.0',
   'is_domain' => 1,
   'is_contact' => 0,
   'description' => ts('
-      If this is a paid event and you want users to be able to register and pay online, 
-      select a payment processor to use. NOTE: Alternatively, 
+      If this is a paid event and you want users to be able to register and pay online,
+      select a payment processor to use. NOTE: Alternatively,
       you can enable the Pay Later feature below without setting up a payment processor.
       All users will then be asked to submit payment offline
-      (e.g. mail in a check, call in a credit card, etc.). 
-      <a href="https://docs.civicrm.org/user/en/stable/contributions/payment-processors" 
+      (e.g. mail in a check, call in a credit card, etc.).
+      <a href="https://docs.civicrm.org/user/en/stable/contributions/payment-processors"
       target="_blank" class="crm-doc-link no-popup" title="Opens documentation in a new window.">
       (learn more...)
       </a>'),
@@ -134,12 +132,11 @@ return [
     'parent_setting' => 'eventsextras_payment_processor',
     'class' => '',
   ],
- ], 
+ ],
  'eventsextras_enable_pay_later_option_default' => [
   'name' => 'eventsextras_enable_pay_later_option_default',
   'title' => ts('Enable Default Pay Later option?'),
-  'type' => 'String',
-  'quick_form_type' => 'Checkbox',
+  'type' => 'Integer',
   'default' => '',
   'html_type' => 'checkbox',
   'add' => '1.0',
@@ -152,7 +149,7 @@ return [
     'parent_setting' => 'eventsextras_enable_pay_later_option',
     'class' => '',
   ],
- ], 
+ ],
  'eventsextras_enable_pay_later_option_default_label' => [
   'name' => 'eventsextras_enable_pay_later_option_default_label',
   'title' => ts('Set Default Pay Later Label'),
@@ -169,7 +166,7 @@ return [
     'parent_setting' => 'eventsextras_enable_pay_later_option_default',
     'class' => '',
   ],
- ], 
+ ],
  'eventsextras_enable_pay_later_option_default_instruction' => [
   'name' => 'eventsextras_enable_pay_later_option_default_instruction',
   'title' => ts('Set Default Pay Later Instruction'),
@@ -186,7 +183,7 @@ return [
     'parent_setting' => 'eventsextras_enable_pay_later_option_default',
     'class' => '',
   ],
- ], 
+ ],
  'eventsextras_enable_pay_later_option_default_billing_address_required' => [
   'name' => 'eventsextras_enable_pay_later_option_default_billing_address_required',
   'title' => ts('Set Default Billing Address Required?'),
@@ -203,7 +200,7 @@ return [
     'parent_setting' => 'eventsextras_enable_pay_later_option_default',
     'class' => '',
   ],
- ], 
+ ],
 
  'eventsextras_pending_participant_expiration_default' => [
   'name' => 'eventsextras_pending_participant_expiration_default',
