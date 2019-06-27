@@ -93,7 +93,7 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
    * @param array $field
    */
   private function generateDefaultSettingField($setting) {
-    if ($setting['name'] ==  'eventsextras_payment_processor_selection_default') {
+    if ($setting['name'] ==  SettingsManager::SETTING_FIELDS['PAYMENT_PROCESSOR_SELECTION_DEFAULT']) {
       $this->generatePaymentProcessorElement($setting);
     } else {
       $this->add(
