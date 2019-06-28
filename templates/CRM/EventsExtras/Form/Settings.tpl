@@ -34,18 +34,21 @@
          {if $form.$elementName.type neq 'checkbox'}
           <div class="label">
             {$form.$elementName.label}
-            {if !$parentSettings.$elementName} {help id=$form.$elementName.name}
+            {if !$parentSettings.$elementName && $settingsHelp.$elementName == TRUE}
+             {help id=$form.$elementName.name}
             {/if}
          </div>
         {/if}
       <div class="content">
-          {$form.$elementName.html}
-          {if $form.$elementName.type eq 'checkbox'}
-            {$form.$elementName.label}{if !$parentSettings.$elementName} {help id=$form.$elementName.name}
+        {$form.$elementName.html}
+        {if $form.$elementName.type eq 'checkbox'}
+          {$form.$elementName.label}
+          {if !$parentSettings.$elementName && $settingsHelp.$elementName == TRUE}
+            {help id=$form.$elementName.name}
           {/if}
-          {if !$parentSettings.$elementName}
-            <div class="description">{$settingsDescription.$elementName}</div>
-          {/if}
+        {/if}
+        {if !$parentSettings.$elementName}
+          <div class="description">{$settingsDescription.$elementName}</div>
         {/if}
       </div>
       <div class="clear"></div>

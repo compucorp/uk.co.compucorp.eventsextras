@@ -24,7 +24,7 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
 
   private $parentSettings = [];
   private $defaultSettingsDescription = [];
-
+  private $defaultSettingsHelp = [];
 
   public function buildQuickForm() {
     CRM_Utils_System::setTitle(E::ts('CiviEvent Extras Settings'));
@@ -44,6 +44,7 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
           $this->generateDefaultSettingField($config);
         }
         $this->defaultSettingsDescription[$config['name']] = $config['description'];
+        $this->defaultSettingsHelp[$config['name']] = $config['is_help'];
       }
       $this->assignConfigSections($name, $config['extra_attributes']['section']);
     }
@@ -58,6 +59,7 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
         'name' => E::ts('Cancel'),
       ],
     ]);
+    $this->assign('settingsHelp', $this->defaultSettingsHelp);
     $this->assign('settingsDescription', $this->defaultSettingsDescription);
     $this->assign('parentSettings', $this->parentSettings);
     $this->assign('displaySections', $this->displaySections);

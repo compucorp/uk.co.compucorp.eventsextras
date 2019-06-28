@@ -19,6 +19,7 @@ return [
    'is_domain' => 1,
    'is_contact' => 0,
    'description' => '',
+   'is_help' => TRUE,
    'help_text' => '',
    'extra_attributes' => [
     'section' => SettingsManager::EVENT_INFO,
@@ -41,6 +42,7 @@ return [
   'add' => '1.0',
   'is_domain' => 1,
   'is_contact' => 0,
+  'is_help' => TRUE,
   'description' => '',
   'help_text' => '',
   'extra_attributes' => [
@@ -61,6 +63,7 @@ return [
   'add' => '1.0',
   'is_domain' => 1,
   'is_contact' => 0,
+  'is_help' => TRUE,
   'description' => '',
   'help_text' => '',
   'extra_attributes' => [
@@ -79,6 +82,7 @@ return [
   'add' => '1.0',
   'is_domain' => 1,
   'is_contact' => 0,
+  'is_help' => TRUE,
   'description' => '',
   'help_text' => '',
   'extra_attributes' => [
@@ -101,6 +105,7 @@ return [
   'add' => '1.0',
   'is_domain' => 1,
   'is_contact' => 0,
+  'is_help' => FALSE,
   'description' => ts('Select the currency to be used for event registration.'),
   'help_text' => '',
   'extra_attributes' => [
@@ -121,6 +126,7 @@ return [
   'add' => '1.0',
   'is_domain' => 1,
   'is_contact' => 0,
+  'is_help' => FALSE,
   'description' => ts('
       If this is a paid event and you want users to be able to register and pay online,
       select a payment processor to use. NOTE: Alternatively,
@@ -148,6 +154,7 @@ return [
   'add' => '1.0',
   'is_domain' => 1,
   'is_contact' => 0,
+  'is_help' => FALSE,
   'description' => ts('Check this box if you want to give users the option to submit payment offline (e.g. mail in a check, call in a credit card, etc.). '),
   'help_text' => '',
   'extra_attributes' => [
@@ -165,9 +172,9 @@ return [
   'add' => '1.0',
   'is_domain' => 1,
   'is_contact' => 0,
+  'is_help' => FALSE,
   'description' => ts('Text displayed next to the checkbox for the "pay later" option on the contribution form. You may include HTML formatting tags.'),
   'help_text' => '',
-  'is_required' => TRUE,
   'extra_attributes' => [
     'section' => SettingsManager::EVENT_FEE,
     'parent_setting' => 'eventsextras_enable_pay_later_option',
@@ -183,9 +190,9 @@ return [
   'add' => '1.0',
   'is_domain' => 1,
   'is_contact' => 0,
+  'is_help' => FALSE,
   'description' => ts('Instructions added to Confirmation and Thank-you pages when the user selects the "pay later" option (e.g. "Mail your check to ... within 3 business days.").  '),
   'help_text' => '',
-  'is_required' => TRUE,
   'extra_attributes' => [
     'section' => SettingsManager::EVENT_FEE,
     'parent_setting' => 'eventsextras_enable_pay_later_option',
@@ -202,6 +209,7 @@ return [
   'add' => '1.0',
   'is_domain' => 1,
   'is_contact' => 0,
+  'is_help' => FALSE,
   'description' => ts('Check this box to require users who select the pay later option to provide billing name and address.'),
   'help_text' => '',
   'extra_attributes' => [
@@ -221,6 +229,7 @@ return [
   'add' => '1.0',
   'is_domain' => 1,
   'is_contact' => 0,
+  'is_help' => TRUE,
   'description' => ts(''),
   'help_text' => '',
   'extra_attributes' => [
@@ -241,6 +250,7 @@ return [
   'add' => '1.0',
   'is_domain' => 1,
   'is_contact' => 0,
+  'is_help' => TRUE,
   'description' => ts(''),
   'help_text' => '',
   'extra_attributes' => [
@@ -259,6 +269,7 @@ return [
   'add' => '1.0',
   'is_domain' => 1,
   'is_contact' => 0,
+  'is_help' => TRUE,
   'description' => ts(''),
   'help_text' => '',
   'extra_attributes' => [
@@ -277,6 +288,7 @@ return [
   'add' => '1.0',
   'is_domain' => 1,
   'is_contact' => 0,
+  'is_help' => TRUE,
   'description' => ts(''),
   'help_text' => '',
   'extra_attributes' => [
@@ -295,6 +307,7 @@ return [
   'add' => '1.0',
   'is_domain' => 1,
   'is_contact' => 0,
+  'is_help' => TRUE,
   'description' => ts(''),
   'help_text' => '',
   'extra_attributes' => [
