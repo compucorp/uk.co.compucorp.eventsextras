@@ -117,6 +117,9 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
         'name' =>  $setting['pseudoconstant']['optionGroupName'],
         'api.OptionValue.get' => ['
           option_group_id' => "id",
+          'options' => [
+            'limit' => 0,
+          ],
           'return' => ['value', 'label']
         ]
       ])['values'][0]['api.OptionValue.get']['values'];
