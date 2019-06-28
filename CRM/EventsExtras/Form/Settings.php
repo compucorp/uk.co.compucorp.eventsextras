@@ -63,6 +63,7 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
     $this->assign('settingsDescription', $this->defaultSettingsDescription);
     $this->assign('parentSettings', $this->parentSettings);
     $this->assign('displaySections', $this->displaySections);
+    $this->assign('eventRegistrationSection', SettingsManager::EVENT_REGISTRATION);
   }
 
   public function postProcess() {

@@ -31,27 +31,30 @@
     <h3>{ts}{$section.title}{/ts}</h3>
     {foreach from=$section.fields item=elementName}
       <div class="crm-section {$elementName}">
-         {if $form.$elementName.type neq 'checkbox'}
-          <div class="label">
+        <div class="label">
+          {if $form.$elementName.type eq 'checkbox' && $sectionName neq $eventRegistrationSection}
+            {$form.$elementName.html}
+          {else}
+            {$form.$elementName.label}
+              {if !$parentSettings.$elementName && $settingsHelp.$elementName eq TRUE}
+                {help id=$form.$elementName.name}
+              {/if}
+          {/if}
+        </div>
+        <div class="content">
+          {if $form.$elementName.type eq 'checkbox' && $sectionName neq $eventRegistrationSection}
             {$form.$elementName.label}
             {if !$parentSettings.$elementName && $settingsHelp.$elementName eq TRUE}
-             {help id=$form.$elementName.name}
+              {help id=$form.$elementName.name}
             {/if}
-         </div>
-        {/if}
-      <div class="content">
-        {$form.$elementName.html}
-        {if $form.$elementName.type eq 'checkbox'}
-          {$form.$elementName.label}
-          {if !$parentSettings.$elementName && $settingsHelp.$elementName eq TRUE}
-            {help id=$form.$elementName.name}
+          {else}
+            {$form.$elementName.html}
           {/if}
-        {/if}
-        {if !$parentSettings.$elementName}
-          <div class="description">{$settingsDescription.$elementName}</div>
-        {/if}
-      </div>
-      <div class="clear"></div>
+          {if !$parentSettings.$elementName}
+            <div class="description">{$settingsDescription.$elementName}</div>
+          {/if}
+        </div>
+        <div class="clear"></div>
       </div>
     {/foreach}
   {/foreach}
