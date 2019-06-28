@@ -17,9 +17,9 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
    * @var array[]
    */
   private $displaySections = [
-    SettingsManager::EVENT_INFO => ['name' => 'Event Info Settings'],
-    SettingsManager::EVENT_FEE => ['name' => 'Fee Settings'],
-    SettingsManager::EVENT_REGISTRATION => ['name' => 'Online Registration Settings'],
+    SettingsManager::EVENT_INFO => ['title' => 'Event Info Settings'],
+    SettingsManager::EVENT_FEE => ['title' => 'Fee Settings'],
+    SettingsManager::EVENT_REGISTRATION => ['title' => 'Online Registration Settings'],
   ];
 
   private $parentSettings = [];
