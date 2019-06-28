@@ -134,7 +134,7 @@ return [
   'help_text' => '',
   'extra_attributes' => [
     'section' => SettingsManager::EVENT_FEE,
-    'parent_setting' => 'eventsextras_payment_processor',
+    'parent_setting' => 'eventsextras_payment_processor_selection',
     'event_form_element_name' => 'payment_processor',
     'class' => '',
   ],
@@ -170,7 +170,7 @@ return [
   'is_required' => TRUE,
   'extra_attributes' => [
     'section' => SettingsManager::EVENT_FEE,
-    'parent_setting' => 'eventsextras_enable_pay_later_option_default',
+    'parent_setting' => 'eventsextras_enable_pay_later_option',
     'event_form_element_name' => 'pay_later_text',
     'class' => '',
   ],
@@ -188,7 +188,7 @@ return [
   'is_required' => TRUE,
   'extra_attributes' => [
     'section' => SettingsManager::EVENT_FEE,
-    'parent_setting' => 'eventsextras_enable_pay_later_option_default',
+    'parent_setting' => 'eventsextras_enable_pay_later_option',
     'event_form_element_name' => 'pay_later_receipt',
     'class' => '',
   ],
@@ -206,12 +206,11 @@ return [
   'help_text' => '',
   'extra_attributes' => [
     'section' => SettingsManager::EVENT_FEE,
-    'parent_setting' => 'eventsextras_enable_pay_later_option_default',
+    'parent_setting' => 'eventsextras_enable_pay_later_option',
     'event_form_element_name' => 'is_billing_required',
     'class' => '',
   ],
  ],
-
  'eventsextras_pending_participant_expiration_default' => [
   'name' => 'eventsextras_pending_participant_expiration_default',
   'title' => ts('Set Default Pending Participant Expiration'),
@@ -226,7 +225,7 @@ return [
   'help_text' => '',
   'extra_attributes' => [
    'section' => SettingsManager::EVENT_REGISTRATION,
-   'parent_setting' => 'eventsextras_enable_pay_later_option',
+   'parent_setting' => 'eventsextras_pending_participant_expiration',
    'event_form_element_name' => 'expiration_time',
    'class' => '',
  ],
@@ -250,7 +249,6 @@ return [
    'event_form_element_name' => 'allow_selfcancelxfer',
  ],
 ],
-
 'eventsextras_allow_self_service_default_time_limit' => [
   'name' => 'eventsextras_allow_self_service_default_time_limit',
   'title' => ts('Set Default Cancellation or transfer time limit (hours)	'),
@@ -265,11 +263,10 @@ return [
   'help_text' => '',
   'extra_attributes' => [
    'section' => SettingsManager::EVENT_REGISTRATION,
-   'parent_setting' => 'eventsextras_allow_self_service_default',
+   'parent_setting' => 'eventsextras_allow_self_service',
    'event_form_element_name' => 'selfcancelxfer_time',
  ],
 ],
-
 'eventsextras_register_multiple_participants_default' => [
   'name' => 'eventsextras_register_multiple_participants_default',
   'title' => ts('Set Default Register multiple participants?	'),
@@ -295,9 +292,6 @@ return [
   'quick_form_type' => 'Select',
   'default' => 9,
   'html_type' => 'select',
-  'pseudoconstant' => [
-    'optionGroupName' => '',
-  ],
   'add' => '1.0',
   'is_domain' => 1,
   'is_contact' => 0,
@@ -305,8 +299,8 @@ return [
   'help_text' => '',
   'extra_attributes' => [
    'section' => SettingsManager::EVENT_REGISTRATION,
-   'parent_setting' => 'eventsextras_register_multiple_participants_default',
-   'event_form_element_name' => 'registration_end_date',
+   'parent_setting' => 'eventsextras_register_multiple_participants',
+   'event_form_element_name' => 'max_additional_participants',
   ],
  ],
 ];
