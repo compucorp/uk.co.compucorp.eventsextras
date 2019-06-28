@@ -26,6 +26,7 @@ class CRM_EventsExtras_Hook_BuildForm_EventFee extends CRM_EventsExtras_Hook_Bui
       return;
     }
     $this->hideField($form);
+    $this->buildForm($formName, $form);
   }
 
   private function buildForm($formName, &$form) {
@@ -39,7 +40,9 @@ class CRM_EventsExtras_Hook_BuildForm_EventFee extends CRM_EventsExtras_Hook_Bui
      $settings = [$paymentProcessor, $paymentProcessorDefault];
      $settingValues = SettingsManager::getSettingsValue($settings);
      if ($settingValues[$paymentProcessor] == 0){
-       $defaults['default_role_id'] = $settingValues[$paymentProcessorDefault];
+      $defaultSettingString = implode(CRM_Core_DAO::VALUE_SEPARATOR, $settingValues[$paymentProcessorDefault]);
+      $paymentProcessorDefaultValue = (array_fill_keys(explode(CRM_Core_DAO::VALUE_SEPARATOR, $defaultSettingString), '1'));
+       $defaults['payment_processor'] = $paymentProcessorDefaultValue;
      }
      $form->setDefaults($defaults);
    }

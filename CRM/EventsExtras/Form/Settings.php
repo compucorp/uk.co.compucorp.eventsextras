@@ -66,6 +66,13 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
   public function postProcess() {
     $configFields = SettingsManager::getConfigFields();
     $submittedValues = $this->exportValues();
+    $paymentProcessors = $submittedValues[SettingsManager::SETTING_FIELDS['PAYMENT_PROCESSOR_SELECTION_DEFAULT']];
+    //flip selected default paymentProcessors before saving to setting
+    $flipedPaymentProcessor = [];
+    foreach ($paymentProcessors as $selectValue => $selected){
+      $flipedPaymentProcessor[] = $selectValue;
+    }
+    $submittedValues[SettingsManager::SETTING_FIELDS['PAYMENT_PROCESSOR_SELECTION_DEFAULT']] = $flipedPaymentProcessor;
     $valuesToSave = array_intersect_key($submittedValues, $configFields);
     $result = civicrm_api3('setting', 'create', $valuesToSave);
     $session = CRM_Core_Session::singleton();
