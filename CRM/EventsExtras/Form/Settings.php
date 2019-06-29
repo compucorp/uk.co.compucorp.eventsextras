@@ -87,7 +87,7 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
       $errors[$rolesDefault] = E::ts('Default Role is a required field');
     }
 
-    if ($values[$paymentProcessor] == 0 && !isset($values[$paymentProcessorDefault]) || empty($values[$paymentProcessorDefault])){
+    if ($values[$paymentProcessor] == 0 && !isset($values[$paymentProcessorDefault])){
       $errors[$paymentProcessorDefault] = E::ts('Please select at least one payment processor and/or enable the pay later option.');
     }
 
