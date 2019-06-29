@@ -30,7 +30,7 @@
   {foreach from=$displaySections key=sectionName item=section}
     <h3>{ts}{$section.title}{/ts}</h3>
     {foreach from=$section.fields item=elementName}
-      <div class="crm-section {$elementName}">
+      <div class="section crm-section {$elementName}-section">
         <div class="label">
           {if $form.$elementName.type eq 'checkbox' && $sectionName neq $eventRegistrationSection}
             {$form.$elementName.html}
