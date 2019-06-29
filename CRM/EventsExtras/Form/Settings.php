@@ -66,6 +66,43 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
     $this->assign('eventRegistrationSection', SettingsManager::EVENT_REGISTRATION);
   }
 
+  public function addRules() {
+    $this->addFormRule(['CRM_EventsExtras_Form_Settings', 'validateRules']);
+  }
+
+
+  public static function validateRules($values) {
+    $errors = [];
+
+    $roles = SettingsManager::SETTING_FIELDS['ROLES'];
+    $rolesDefault = SettingsManager::SETTING_FIELDS['ROLES_DEFAULT'];
+    $paymentProcessor = SettingsManager::SETTING_FIELDS['PAYMENT_PROCESSOR_SELECTION'];
+    $paymentProcessorDefault =SettingsManager::SETTING_FIELDS['PAYMENT_PROCESSOR_SELECTION_DEFAULT'];
+    $payLaterOption = SettingsManager::SETTING_FIELDS['PAY_LATER_OPTION'];
+    $paylaterOptionDefault= SettingsManager::SETTING_FIELDS['PAY_LATER_OPTION_DEFAULT'];
+    $payLaterLabel = SettingsManager::SETTING_FIELDS['PAY_LATER_OPTION_DEFAULT_LABEL'];
+    $payLaterInsuection = SettingsManager::SETTING_FIELDS['PAY_LATER_OPTION_DEFAULT_LABEL_INSTRUCTION'];
+
+    if ($values[$roles] == 0 && ($values[$rolesDefault]) == NULL) {
+      $errors[$rolesDefault] = E::ts('Default Role is a required field');
+    }
+
+    if ($values[$paymentProcessor] == 0 && !isset($values[$paymentProcessorDefault]) || empty($values[$paymentProcessorDefault])){
+      $errors[$paymentProcessorDefault] = E::ts('Please select at least one payment processor and/or enable the pay later option.');
+    }
+
+    if ($values[$payLaterOption] == 0 && isset($values[$paylaterOptionDefault]) && $values[$paylaterOptionDefault] == 1){
+      if ($values[$payLaterLabel] == NULL){
+        $errors[$payLaterLabel] = E::ts(' Please enter the Pay Later prompt to be displayed on the Registration form.');
+      }
+      if ($values[$payLaterInsuection] == NULL){
+        $errors[$payLaterInsuection] = E::ts('Please enter the Pay Later instructions to be displayed to your users.');
+      }
+    }
+
+    return empty($errors) ? TRUE : $errors;
+  }
+
   public function postProcess() {
     $configFields = SettingsManager::getConfigFields();
     $submittedValues = $this->exportValues();
