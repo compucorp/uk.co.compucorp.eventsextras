@@ -57,7 +57,7 @@ return [
  'eventsextras_include_map_event_location_default' => [
   'name' => 'eventsextras_include_map_event_location_default',
   'title' => ts('Set Default Include Map to Event Location'),
-  'type' => 'String',
+  'type' => 'Integer',
   'default' => '',
   'html_type' => 'checkbox',
   'add' => '1.0',
@@ -76,7 +76,7 @@ return [
 'eventsextras_public_event_default' => [
   'name' => 'eventsextras_public_event_default',
   'title' => ts('Set Default Public Event'),
-  'type' => 'String',
+  'type' => 'Integer',
   'default' => 0,
   'html_type' => 'checkbox',
   'add' => '1.0',
@@ -168,6 +168,7 @@ return [
   'name' => 'eventsextras_enable_pay_later_option_default_label',
   'title' => ts('Set Default Pay Later Label'),
   'type' => 'String',
+  'default' => '',
   'html_type' => 'textarea',
   'add' => '1.0',
   'is_domain' => 1,
@@ -186,6 +187,7 @@ return [
   'name' => 'eventsextras_enable_pay_later_option_default_instruction',
   'title' => ts('Set Default Pay Later Instruction'),
   'type' => 'String',
+  'default' => '',
   'html_type' => 'textarea',
   'add' => '1.0',
   'is_domain' => 1,
