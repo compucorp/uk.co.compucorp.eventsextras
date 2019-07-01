@@ -44,7 +44,7 @@ class CRM_EventsExtras_SettingsManager {
   ];
 
    /**
-   * Gets the settings Value
+   * Gets a single setting value
    *
    * @return array
   */
@@ -56,7 +56,7 @@ class CRM_EventsExtras_SettingsManager {
   }
 
    /**
-   * Gets the settings Value
+   * Gets multiple settings values
    *
    * @return array
   */
@@ -108,5 +108,6 @@ class CRM_EventsExtras_SettingsManager {
     }
     return $settingFields;
   }
+
 }
 
