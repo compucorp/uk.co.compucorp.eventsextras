@@ -40,7 +40,7 @@ class CRM_EventsExtras_Hook_BuildForm_EventInfo extends CRM_EventsExtras_Hook_Bu
     $settings = [$role, $roleDefault];
     $settingValues = SettingsManager::getSettingsValue($settings);
     if ($settingValues[$role] == 0){
-      $defaults['payment_processor'] = $settingValues[$roleDefault];
+      $defaults['default_role_id'] = $settingValues[$roleDefault];
     }
     $form->setDefaults($defaults);
   }
