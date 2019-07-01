@@ -35,7 +35,7 @@ class CRM_EventsExtras_Hook_Pre_Event {
       $this->preProcessData(SettingsManager::EVENT_INFO, $params);
     } elseif (array_key_exists('is_monetary', $params) && $params['is_monetary'] == 1) {
       $this->preProcessData(SettingsManager::EVENT_FEE, $params);
-    } elseif (array_key_exists('is_online_registration', $params) && $params['is_online_registration' == 1]) {
+    } elseif (array_key_exists('is_online_registration', $params) && $params['is_online_registration'] == 1) {
       $this->preProcessData(SettingsManager::EVENT_REGISTRATION, $params);
     }
   }
@@ -52,10 +52,8 @@ class CRM_EventsExtras_Hook_Pre_Event {
         if (!array_key_exists('parent_setting', $field['extra_attributes'])){ //handle parent setting
           if ($settingValue == 0){
             $settingsToProcess[$settingName] = $settingName;
-          }else {
-            unset($fields[$settingName]);
           }
-        } else {
+        } else { //handle child setting and get element name
           if (in_array($field['extra_attributes']['parent_setting'], $settingsToProcess)){
             $formName = $field['extra_attributes']['event_form_element_name'];
             $fieldToProcess[$formName] = $settingValue;
