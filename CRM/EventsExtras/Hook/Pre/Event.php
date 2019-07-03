@@ -62,7 +62,15 @@ class CRM_EventsExtras_Hook_Pre_Event {
       }
     }
     foreach ($fieldToProcess as $field => $value){
-      if (!($section == SettingsManager::EVENT_FEE && $field == 'payment_processor')){ // dont care about payment processor if it is event section
+      // flip payment processor if it is event fee section
+      if (($section == SettingsManager::EVENT_FEE && $field == 'payment_processor')){
+        //flip selected default paymentProcessors before saving to setting
+        $flipedPaymentProcessor = [];
+        foreach ($value as $selectValue => $selected){
+          $flipedPaymentProcessor[$selected] = $selectValue;
+        }
+        $params[$field] = $flipedPaymentProcessor;
+      }else {
         $params[$field] = $value;
       }
     }
