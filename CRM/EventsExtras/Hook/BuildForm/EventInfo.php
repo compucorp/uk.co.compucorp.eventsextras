@@ -36,6 +36,8 @@ class CRM_EventsExtras_Hook_BuildForm_EventInfo extends CRM_EventsExtras_Hook_Bu
     /**
    * Set defaults for form.
    *
+   * @param array $form
+   *
    */
   private function setDefaults(&$form){
     $defaults = [];

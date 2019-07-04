@@ -127,6 +127,11 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
     }
   }
 
+   /**
+   * Add html element to the form for parent default setting.
+   *
+   * @param array $config
+   */
   private function addParentElement($config){
     if ($config['html_type'] == 'select') {
       $this->generateDefaultSelectList($config);
@@ -137,6 +142,11 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
     $this->defaultSettingsHelp[$config['name']] = $config['is_help'];
   }
 
+   /**
+   * Add html element to the form for child a default (global) setting.
+   *
+   * @param array $config
+   */
   private function addChildElement($name, $config){
     $this->addRadio(
       $name,
