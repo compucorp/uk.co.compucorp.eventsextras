@@ -26,7 +26,7 @@ function eventsextras_civicrm_buildForm($formName, &$form){
  */
 function eventsextras_civicrm_pre($op, $objectName, $id, &$params){
   $listeners = [
-    new CRM_EventsExtras_Hook_Pre_Event(),
+    new CRM_EventsExtras_Hook_Pre_ManageEvent(),
   ];
   foreach ($listeners as $currentListener) {
     $currentListener->handle($op, $objectName, $id, $params);
