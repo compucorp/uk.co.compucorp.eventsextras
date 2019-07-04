@@ -42,7 +42,7 @@ class CRM_EventsExtras_Hook_BuildForm_EventFee extends CRM_EventsExtras_Hook_Bui
      if ($settingValues[$paymentProcessor] == 0){
       $defaultSettingString = implode(CRM_Core_DAO::VALUE_SEPARATOR, $settingValues[$paymentProcessorDefault]);
       $paymentProcessorDefaultValue = (array_fill_keys(explode(CRM_Core_DAO::VALUE_SEPARATOR, $defaultSettingString), '1'));
-       $defaults['payment_processor'] = $paymentProcessorDefaultValue;
+      $defaults['payment_processor'] = $paymentProcessorDefaultValue;
      }
      $form->setDefaults($defaults);
    }

@@ -57,10 +57,12 @@ abstract class CRM_EventsExtras_Hook_BuildForm_BaseEvent {
     $configFields = SettingsManager::getConfigFields($this->eventTab);
     $settingsValue = SettingsManager::getSettingsValue();
     $hiddenFields = [];
+
     foreach ($configFields as $config) {
-     if (isset($settingsValue[$config['name']]) &&
-        $settingsValue[$config['name']] == 0 &&
-        array_key_exists('css_class', $config['extra_attributes'])){
+      $configNameExists = isset($settingsValue[$config['name']]);
+      $configNameIsZero = $settingsValue[$config['name']] == 0;
+      $cssClassExists = array_key_exists('css_class', $config['extra_attributes']);
+     if ($configNameExists && $configNameIsZero && $cssClassExists){
         $hiddenFields[] = $config['extra_attributes']['css_class'];
       }
     }

@@ -7,7 +7,14 @@ use CRM_EventsExtras_SettingsManager as SettingsManager;
  */
 class CRM_EventsExtras_Hook_Pre_Event {
 
-
+  /**
+   * Handle Hook Pre Event
+   *
+   * @param string $formName
+   * @param string $objectName
+   * @param int $id
+   * @param array $params
+   */
   public function handle($op, $objectName, $id, &$params) {
     if (!$this->shouldHandle($op, $objectName)) {
       return;
@@ -27,6 +34,14 @@ class CRM_EventsExtras_Hook_Pre_Event {
     return $objectName == 'Event';
   }
 
+   /**
+   * Set event parameter piror setting to database
+   *
+   * @param string $op
+   * @param int $id
+   * @param array $params
+   *
+   */
   private function preSetData($op, $id, &$params ){
     if ($op == 'delete' || $op == 'view') {
       return;
@@ -50,7 +65,7 @@ class CRM_EventsExtras_Hook_Pre_Event {
       if (isset($settingValue[$settingName])){
         $settingValue = $settingValue[$settingName];
         if (!array_key_exists('parent_setting', $field['extra_attributes'])){ //handle parent setting
-          if ($settingValue == 0){
+          if ($settingValue == 0) {
             $settingsToProcess[$settingName] = $settingName;
           }
         } else { //handle child setting and get element name

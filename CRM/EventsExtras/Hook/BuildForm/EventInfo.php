@@ -33,6 +33,10 @@ class CRM_EventsExtras_Hook_BuildForm_EventInfo extends CRM_EventsExtras_Hook_Bu
    $this->setDefaults($form);
   }
 
+    /**
+   * Set defaults for form.
+   *
+   */
   private function setDefaults(&$form){
     $defaults = [];
     $role = SettingsManager::SETTING_FIELDS['ROLES'];

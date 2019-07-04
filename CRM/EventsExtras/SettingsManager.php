@@ -40,7 +40,7 @@ class CRM_EventsExtras_SettingsManager {
    'ALLOW_SELF_SERVICE_DEFAULT_TIME_LIMIT' => 'eventsextras_allow_self_service_default_time_limit',
    'REGISTER_MULTIPLE_PARTICIPANTS' => 'eventsextras_register_multiple_participants',
    'REGISTER_MULTIPLE_PARTICIPANTS_DEFULT' => 'eventsextras_register_multiple_participants_default',
-   'REGISTER_MULTIPLE_PARTICIPANTS_DEFAULT_MAXINUM_PARTICIPANT' => 'eventsextras_register_multiple_participants_default_maxinum_participant'
+   'REGISTER_MULTIPLE_PARTICIPANTS_DEFAULT_MAXIMUM_PARTICIPANT' => 'eventsextras_register_multiple_participants_default_maximum_participant'
   ];
 
    /**

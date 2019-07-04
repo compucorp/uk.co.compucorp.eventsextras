@@ -23,7 +23,7 @@ return [
    'help_text' => '',
    'extra_attributes' => [
     'section' => SettingsManager::EVENT_INFO,
-    'parent_setting' => 'eventsextras_roles',
+    'parent_setting' => SettingsManager::SETTING_FIELDS['ROLES'],
     'event_form_element_name' => 'default_role_id',
     'class' => 'crm-select2',
     'placeholder' => ts('- Select -'),
@@ -47,7 +47,7 @@ return [
   'help_text' => '',
   'extra_attributes' => [
     'section' => SettingsManager::EVENT_INFO,
-    'parent_setting' => 'eventsextras_participant_listing',
+    'parent_setting' => SettingsManager::SETTING_FIELDS['PARTICIPANT_LISTING'],
     'event_form_element_name' => 'participant_listing_id',
     'class' => 'crm-select2',
     'placeholder' => ts('Disabled'),
@@ -68,7 +68,7 @@ return [
   'help_text' => '',
   'extra_attributes' => [
     'section' => SettingsManager::EVENT_INFO,
-    'parent_setting' => 'eventsextras_include_map_event_location',
+    'parent_setting' => SettingsManager::SETTING_FIELDS['INCLUDE_MAP_LOCATION_EVENT'],
     'event_form_element_name' => 'is_map',
     'class' => '',
  ],
@@ -87,7 +87,7 @@ return [
   'help_text' => '',
   'extra_attributes' => [
     'section' => SettingsManager::EVENT_INFO,
-    'parent_setting' => 'eventsextras_public_event',
+    'parent_setting' => SettingsManager::SETTING_FIELDS['INCLUDE_MAP_PUBLIC_EVENT'],
     'event_form_element_name' => 'is_public',
     'class' => '',
   ],
@@ -110,7 +110,7 @@ return [
   'help_text' => '',
   'extra_attributes' => [
     'section' => SettingsManager::EVENT_FEE,
-    'parent_setting' => 'eventsextras_currency',
+    'parent_setting' => SettingsManager::SETTING_FIELDS['CURRENCY'],
     'event_form_element_name' => 'currency',
     'class' => 'crm-select2',
     'placeholder' => ts('--Select--'),
@@ -140,7 +140,7 @@ return [
   'help_text' => '',
   'extra_attributes' => [
     'section' => SettingsManager::EVENT_FEE,
-    'parent_setting' => 'eventsextras_payment_processor_selection',
+    'parent_setting' => SettingsManager::SETTING_FIELDS['PAYMENT_PROCESSOR_SELECTION'],
     'event_form_element_name' => 'payment_processor',
     'class' => '',
   ],
@@ -159,7 +159,7 @@ return [
   'help_text' => '',
   'extra_attributes' => [
     'section' => SettingsManager::EVENT_FEE,
-    'parent_setting' => 'eventsextras_enable_pay_later_option',
+    'parent_setting' => SettingsManager::SETTING_FIELDS['PAY_LATER_OPTION'],
     'event_form_element_name' => 'is_pay_later',
     'class' => '',
   ],
@@ -178,7 +178,7 @@ return [
   'help_text' => '',
   'extra_attributes' => [
     'section' => SettingsManager::EVENT_FEE,
-    'parent_setting' => 'eventsextras_enable_pay_later_option',
+    'parent_setting' => SettingsManager::SETTING_FIELDS['PAY_LATER_OPTION'],
     'event_form_element_name' => 'pay_later_text',
     'class' => '',
   ],
@@ -197,7 +197,7 @@ return [
   'help_text' => '',
   'extra_attributes' => [
     'section' => SettingsManager::EVENT_FEE,
-    'parent_setting' => 'eventsextras_enable_pay_later_option',
+    'parent_setting' => SettingsManager::SETTING_FIELDS['PAY_LATER_OPTION'],
     'event_form_element_name' => 'pay_later_receipt',
     'class' => '',
   ],
@@ -216,7 +216,7 @@ return [
   'help_text' => '',
   'extra_attributes' => [
     'section' => SettingsManager::EVENT_FEE,
-    'parent_setting' => 'eventsextras_enable_pay_later_option',
+    'parent_setting' => SettingsManager::SETTING_FIELDS['PAY_LATER_OPTION'],
     'event_form_element_name' => 'is_billing_required',
     'class' => '',
   ],
@@ -236,7 +236,7 @@ return [
   'help_text' => '',
   'extra_attributes' => [
    'section' => SettingsManager::EVENT_REGISTRATION,
-   'parent_setting' => 'eventsextras_pending_participant_expiration',
+   'parent_setting' => SettingsManager::SETTING_FIELDS['PENDING_PARTICIPANT_EXPIRATION'],
    'event_form_element_name' => 'expiration_time',
    'class' => '',
  ],
@@ -257,7 +257,7 @@ return [
   'help_text' => '',
   'extra_attributes' => [
    'section' => SettingsManager::EVENT_REGISTRATION,
-   'parent_setting' => 'eventsextras_allow_self_service',
+   'parent_setting' => SettingsManager::SETTING_FIELDS['ALLOW_SELF_SERIVCE'],
    'event_form_element_name' => 'allow_selfcancelxfer',
  ],
 ],
@@ -276,7 +276,7 @@ return [
   'help_text' => '',
   'extra_attributes' => [
    'section' => SettingsManager::EVENT_REGISTRATION,
-   'parent_setting' => 'eventsextras_allow_self_service',
+   'parent_setting' => SettingsManager::SETTING_FIELDS['ALLOW_SELF_SERIVCE'],
    'event_form_element_name' => 'selfcancelxfer_time',
  ],
 ],
@@ -295,12 +295,12 @@ return [
   'help_text' => '',
   'extra_attributes' => [
    'section' => SettingsManager::EVENT_REGISTRATION,
-   'parent_setting' => 'eventsextras_register_multiple_participants',
+   'parent_setting' => SettingsManager::SETTING_FIELDS['REGISTER_MULTIPLE_PARTICIPANTS'],
    'event_form_element_name' => 'is_multiple_registrations',
  ],
 ],
-'eventsextras_register_multiple_participants_default_maxinum_participant' => [
-  'name' => 'eventsextras_register_multiple_participants_default_maxinum_participant',
+'eventsextras_register_multiple_participants_default_maximum_participant' => [
+  'name' => 'eventsextras_register_multiple_participants_default_maximum_participant',
   'title' => ts('Set Default Maximum additional participants	'),
   'type' => 'Integer',
   'quick_form_type' => 'Select',
@@ -314,7 +314,7 @@ return [
   'help_text' => '',
   'extra_attributes' => [
    'section' => SettingsManager::EVENT_REGISTRATION,
-   'parent_setting' => 'eventsextras_register_multiple_participants',
+   'parent_setting' => SettingsManager::SETTING_FIELDS['REGISTER_MULTIPLE_PARTICIPANTS'],
    'event_form_element_name' => 'max_additional_participants',
   ],
  ],
