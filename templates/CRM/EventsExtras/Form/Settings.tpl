@@ -27,15 +27,34 @@
   <div class="crm-submit-buttons">
     {include file="CRM/common/formButtons.tpl" location="bottom"}
   </div>
-  {foreach from=$displaySections item=section}
-    <h3>{ts}{$section.name}{/ts}</h3>
+  {foreach from=$displaySections key=sectionName item=section}
+    <h3>{ts}{$section.title}{/ts}</h3>
     {foreach from=$section.fields item=elementName}
-      <div class="crm-section">  
-      <div class="label">{$form.$elementName.label} {help id=$form.$elementName.name}</div>
-        <div class="content">
-          {$form.$elementName.html}
+      <div class="section crm-section {$elementName}-section">
+        <div class="label">
+          {if $form.$elementName.type eq 'checkbox' && $sectionName neq $eventRegistrationSection}
+            {$form.$elementName.html}
+          {else}
+            {$form.$elementName.label}
+              {if !$parentSettings.$elementName && $settingsHelp.$elementName eq TRUE}
+                {help id=$form.$elementName.name}
+              {/if}
+          {/if}
         </div>
-      <div class="clear"></div>
+        <div class="content">
+          {if $form.$elementName.type eq 'checkbox' && $sectionName neq $eventRegistrationSection}
+            {$form.$elementName.label}
+            {if !$parentSettings.$elementName && $settingsHelp.$elementName eq TRUE}
+              {help id=$form.$elementName.name}
+            {/if}
+          {else}
+            {$form.$elementName.html}
+          {/if}
+          {if !$parentSettings.$elementName}
+            <div class="description">{$settingsDescription.$elementName}</div>
+          {/if}
+        </div>
+        <div class="clear"></div>
       </div>
     {/foreach}
   {/foreach}
@@ -43,3 +62,31 @@
     {include file="CRM/common/formButtons.tpl" location="bottom"}
   </div>
 </div>
+{literal}
+  <script type="text/javascript">
+    CRM.$(function($) {
+    {/literal}
+    {foreach from=$displaySections item=section}
+     {foreach from=$section.fields item=elementName}
+      {if $parentSettings.$elementName}
+        {literal}
+        //hide default option by default if show is selected
+        if($("input[name='{/literal}{$form.$elementName.name}{literal}']").prop("checked") == true){
+          $("[class*='{/literal}{$form.$elementName.name}{literal}_']").hide();
+        }
+        $("input[name='{/literal}{$form.$elementName.name}{literal}']").change(function() {
+          var selectVale = $(this).val();
+          if (selectVale == 1) {
+            $("[class*='{/literal}{$form.$elementName.name}{literal}_']").hide();
+          }else {
+            $("[class*='{/literal}{$form.$elementName.name}{literal}_']").show();
+          }
+        });
+        {/literal}
+      {/if}
+      {/foreach}
+    {/foreach}
+    {literal}
+    });
+  </script>
+{/literal}

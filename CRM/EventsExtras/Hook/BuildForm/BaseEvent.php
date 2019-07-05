@@ -9,15 +9,15 @@ use CRM_EventsExtras_SettingsManager as SettingsManager;
 abstract class CRM_EventsExtras_Hook_BuildForm_BaseEvent {
 
   /**
-   * Event tab to display on the form 
+   * Event tab to display on the form
    */
   protected $eventTab;
 
   /**
    * Constractor for BuildForm class
-   * 
+   *
    * @param string $eventTab
-   * 
+   *
    */
   protected function __construct($eventTab){
     $this->eventTab = $eventTab;
@@ -57,8 +57,12 @@ abstract class CRM_EventsExtras_Hook_BuildForm_BaseEvent {
     $configFields = SettingsManager::getConfigFields($this->eventTab);
     $settingsValue = SettingsManager::getSettingsValue();
     $hiddenFields = [];
+
     foreach ($configFields as $config) {
-     if ($settingsValue[$config['name']] == 0){
+      $configNameExists = isset($settingsValue[$config['name']]);
+      $configNameIsZero = $settingsValue[$config['name']] == 0;
+      $cssClassExists = array_key_exists('css_class', $config['extra_attributes']);
+     if ($configNameExists && $configNameIsZero && $cssClassExists){
         $hiddenFields[] = $config['extra_attributes']['css_class'];
       }
     }
