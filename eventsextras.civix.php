@@ -208,7 +208,7 @@ function _eventsextras_civix_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL)
  * @return CRM_EventsExtras_Upgrader
  */
 function _eventsextras_civix_upgrader() {
-  if (!file_exists(__DIR__ . '/CRM/Eventsextras/Upgrader.php')) {
+  if (!file_exists(__DIR__ . '/CRM/EventsExtras/Upgrader.php')) {
     return NULL;
   }
   else {
