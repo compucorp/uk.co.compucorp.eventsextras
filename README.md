@@ -1,44 +1,22 @@
-# uk.co.compucorp.eventsextras
+# EventsExtras
 
-![Screenshot](/images/screenshot.png)
+## What is CiviCRM EventsExtras Extension?
 
-(*FIXME: In one or two paragraphs, describe what the extension does and why one would download it. *)
+EventsExtras Extension provides a functionality to hide Events html fields on Manage Event including Event Info (New Event), Event Fee and Online Registration Pages. It also allows CiviCRM Administrators to set default (global) values for the fields that are hidden from pages.
 
-The extension is licensed under [AGPL-3.0](LICENSE.txt).
+When creating or updating CiviCRM Event pages, there are certain mandatory fields for which a value is required, for example, a Default Roles must be selected on the Event Info page in order to create a new Event. Ttherefore, if the Default Role field is hidden. the CiviCRM Administrator must always set the default global settings of Default Roles. 
 
-## Requirements
 
-* PHP v5.6+
-* CiviCRM (*FIXME: Version number*)
+## How do I get EventsExtras Extension?
 
-## Installation (Web UI)
+Events Extras Extension is designed to work with CiviCRM 5.8 plus (it may work with previous versions of CiviCRM 5.x but it was not tested on CiviCRM versions less than CiviCRM 5.8) If you are on an earlier version of CiviCRM, you will need to upgrade your site first or contact info@compucorp.co.uk if you need assistance to do so.
 
-This extension has not yet been published for installation via the web UI.
+If your CiviCRM is already on CiviCRM 5.8 plus and this is the first time you use an extension,  please see [here](http://wiki.civicrm.org/confluence/display/CRMDOC/Extensions "CiviCRM Extensions Installation") for full instructions and information on how to install and configure extensions.
 
-## Installation (CLI, Zip)
+You can get the latest release of EvensExtras our [Github repository release page](https://github.com/compucorp/uk.co.compucorp.eventsextras/releases).
 
-Sysadmins and developers may download the `.zip` file for this extension and
-install it with the command-line tool [cv](https://github.com/civicrm/cv).
+## Support
 
-```bash
-cd <extension-dir>
-cv dl uk.co.compucorp.eventsextras@https://github.com/FIXME/uk.co.compucorp.eventsextras/archive/master.zip
-```
+Please contact us at following email address if you have any questions: <hello@compucorp.co.uk>
 
-## Installation (CLI, Git)
-
-Sysadmins and developers may clone the [Git](https://en.wikipedia.org/wiki/Git) repo for this extension and
-install it with the command-line tool [cv](https://github.com/civicrm/cv).
-
-```bash
-git clone https://github.com/FIXME/uk.co.compucorp.eventsextras.git
-cv en eventsextras
-```
-
-## Usage
-
-(* FIXME: Where would a new user navigate to get started? What changes would they see? *)
-
-## Known Issues
-
-(* FIXME *)
+Paid support for this extension is available, please contact us either via Github or at <hello@compucorp.co.uk>
