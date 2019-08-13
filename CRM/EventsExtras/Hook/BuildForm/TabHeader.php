@@ -38,13 +38,17 @@ class CRM_EventsExtras_Hook_BuildForm_TabHeader {
 
   private function hideTab(&$form){
     $vars = $form->get_template_vars('tabHeader');
-    if (SettingsManager::getSettingValue(SettingsManager::SETTING_FIELDS['LOCATION_TAB']) == TRUE){
+
+    $locationTabSetting = SettingsManager::getSettingValue(SettingsManager::SETTING_FIELDS['LOCATION_TAB']);
+    $tellFriendTabSetting = SettingsManager::getSettingValue(SettingsManager::SETTING_FIELDS['TELL_FRIEND_TAB']);
+    $pcpTabSetting = SettingsManager::getSettingValue(SettingsManager::SETTING_FIELDS['PCP_TAB']);
+    if (reset($locationTabSetting) == 0){
       unset($vars['location']);
     }
-    if (SettingsManager::getSettingValue(SettingsManager::SETTING_FIELDS['TELL_FRIEND_TAB']) == TRUE){
+    if (reset($tellFriendTabSetting) == 0){
       unset($vars['friend']);
     }
-    if (SettingsManager::getSettingValue(SettingsManager::SETTING_FIELDS['PCP_TAB']) == TRUE){
+    if (reset($pcpTabSetting) == 0){
       unset($vars['pcp']);
     }
     $form->assign_by_ref('tabHeader', $vars);
