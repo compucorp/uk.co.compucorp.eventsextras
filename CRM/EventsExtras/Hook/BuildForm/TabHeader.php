@@ -38,7 +38,6 @@ class CRM_EventsExtras_Hook_BuildForm_TabHeader {
 
   private function hideTab(&$form){
     $vars = $form->get_template_vars('tabHeader');
-
     $locationTabSetting = SettingsManager::getSettingValue(SettingsManager::SETTING_FIELDS['LOCATION_TAB']);
     $tellFriendTabSetting = SettingsManager::getSettingValue(SettingsManager::SETTING_FIELDS['TELL_FRIEND_TAB']);
     $pcpTabSetting = SettingsManager::getSettingValue(SettingsManager::SETTING_FIELDS['PCP_TAB']);
