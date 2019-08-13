@@ -33,7 +33,6 @@ class CRM_EventsExtras_Hook_BuildForm_TabHeader {
       return TRUE;
     }
     return FALSE;
-
   }
 
   private function hideTab(&$form){
