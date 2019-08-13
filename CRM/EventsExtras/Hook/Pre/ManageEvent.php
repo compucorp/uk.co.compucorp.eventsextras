@@ -3,9 +3,9 @@
 use CRM_EventsExtras_SettingsManager as SettingsManager;
 
 /**
- * Class for Event Fee Pre Hook
+ * Class for for Pre Manage Event Hook
  */
-class CRM_EventsExtras_Hook_Pre_Event {
+class CRM_EventsExtras_Hook_Pre_ManageEvent {
 
   /**
    * Handle Hook Pre Event
