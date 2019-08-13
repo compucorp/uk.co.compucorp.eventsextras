@@ -10,7 +10,7 @@ use CRM_EventsExtras_ExtensionUtil as E;
  */
 function eventsextras_civicrm_buildForm($formName, &$form){
   $listeners = [
-    new CRM_EventsExtras_Hook_BuildForm_TabHeader(),
+    new CRM_EventsExtras_Hook_BuildForm_EventTabHeader(),
     new CRM_EventsExtras_Hook_BuildForm_EventInfo(),
     new CRM_EventsExtras_Hook_BuildForm_EventFee(),
     new CRM_EventsExtras_Hook_BuildForm_EventRegistration(),
