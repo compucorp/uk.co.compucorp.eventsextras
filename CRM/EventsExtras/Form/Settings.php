@@ -17,7 +17,8 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
    * @var array[]
    */
   private $displaySections = [
-    SettingsManager::EVENT_INFO => ['title' => 'Event Info Settings'],
+    SettingsManager::EVENT_TAB=> ['title' => 'Tab Settings'],
+    SettingsManager::EVENT_INFO => ['title' => 'Info Settings'],
     SettingsManager::EVENT_FEE => ['title' => 'Fee Settings'],
     SettingsManager::EVENT_REGISTRATION => ['title' => 'Online Registration Settings'],
   ];
@@ -246,6 +247,10 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
    */
   private function assignConfigSections($name, $section) {
     switch ($section) {
+      case SettingsManager::EVENT_TAB:
+        $this->displaySections[SettingsManager::EVENT_TAB]['fields'][$name] = $name;
+        break;
+
       case SettingsManager::EVENT_INFO:
         $this->displaySections[SettingsManager::EVENT_INFO]['fields'][$name] = $name;
         break;
