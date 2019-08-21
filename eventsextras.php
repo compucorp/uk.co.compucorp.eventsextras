@@ -3,16 +3,6 @@
 require_once 'eventsextras.civix.php';
 use CRM_EventsExtras_ExtensionUtil as E;
 
-function eventsextra_civicrm_links($op, $objectName, $objectId, &$links, &$mask, &$values){
-  CRM_Core_Error::debug($op);
-  CRM_Core_Error::debug($objectName);
-  CRM_Core_Error::debug($links);
-
-
-}
-
-
-
 /**
  * Implements hook_civicrm_buildForm().
  *
