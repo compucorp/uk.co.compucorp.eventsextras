@@ -10,6 +10,7 @@ use CRM_EventsExtras_ExtensionUtil as E;
  */
 function eventsextras_civicrm_buildForm($formName, &$form){
   $listeners = [
+    new CRM_EventsExtras_Hook_BuildForm_EventTabHeader(),
     new CRM_EventsExtras_Hook_BuildForm_EventInfo(),
     new CRM_EventsExtras_Hook_BuildForm_EventFee(),
     new CRM_EventsExtras_Hook_BuildForm_EventRegistration(),
@@ -31,6 +32,21 @@ function eventsextras_civicrm_pre($op, $objectName, $id, &$params){
   foreach ($listeners as $currentListener) {
     $currentListener->handle($op, $objectName, $id, $params);
   }
+}
+
+/**
+ * Implements hook_civicrm_pre().
+ *
+ * @link hhttps://docs.civicrm.org/dev/en/latest/hooks/hook_civicrm_tab/
+ */
+function eventsextras_civicrm_tab(&$tabs, $contactID) {
+  /*$listeners = [
+    new CRM_EventsExtras_Hook_Pre_ManageEvent(),
+  ];
+  foreach ($listeners as $currentListener) {
+    $currentListener->handle((&$tabs, $contactID);
+  }*/
+
 }
 
 /**

@@ -8,12 +8,16 @@ class CRM_EventsExtras_SettingsManager {
   /**
    * Constants for setting sections
    */
+  const EVENT_TAB = 'event_tab';
   const EVENT_INFO = 'event_info';
   const EVENT_FEE = 'event_fee';
   const EVENT_REGISTRATION = 'event_online_registration';
 
 
   const SETTING_FIELDS = [
+   'LOCATION_TAB' => 'eventsextras_location_tab',
+   'TELL_FRIEND_TAB' => 'eventsextras_tell_friend_tab',
+   'PCP_TAB' => 'eventsextras_pcp_tab',
    'ROLES' => 'eventsextras_roles',
    'ROLES_DEFAULT' => 'eventsextras_roles_default',
    'PARTICIPANT_LISTING' => 'eventsextras_participant_listing',

@@ -5,6 +5,57 @@ use CRM_EventsExtras_SettingsManager as SettingsManager;
 * Settings metadata file
 */
 return [
+  'eventsextras_location_tab' => [
+    'name' => 'eventsextras_location_tab',
+    'title' => ts('Location Tab'),
+    'type' => 'Boolean',
+    'quick_form_type' => 'YesNo',
+    'default' => TRUE,
+    'html_type' => 'radio',
+    'add' => '1.0',
+    'is_domain' => 1,
+    'is_contact' => 0,
+    'description' => ts('Show/Hide Location Tab'),
+    'help_text' => '',
+    'extra_attributes' => [
+     'section' => SettingsManager::EVENT_TAB,
+     'css_class' => '',
+   ],
+  ],
+  'eventsextras_tell_friend_tab' => [
+    'name' => 'eventsextras_tell_friend_tab',
+    'title' => ts('Tell Friend Tab'),
+    'type' => 'Boolean',
+    'quick_form_type' => 'YesNo',
+    'default' => TRUE,
+    'html_type' => 'radio',
+    'add' => '1.0',
+    'is_domain' => 1,
+    'is_contact' => 0,
+    'description' => ts('Show/Hide Tell Friend Tab'),
+    'help_text' => '',
+    'extra_attributes' => [
+     'section' => SettingsManager::EVENT_TAB,
+     'css_class' => '',
+   ],
+  ],
+  'eventsextras_pcp_tab' => [
+    'name' => 'eventsextras_pcp_tab',
+    'title' => ts('Personal Compaings Tab'),
+    'type' => 'Boolean',
+    'quick_form_type' => 'YesNo',
+    'default' => TRUE,
+    'html_type' => 'radio',
+    'add' => '1.0',
+    'is_domain' => 1,
+    'is_contact' => 0,
+    'description' => ts('Show/Hide Personal Campaigns Tab'),
+    'help_text' => '',
+    'extra_attributes' => [
+     'section' => SettingsManager::EVENT_TAB,
+     'css_class' => '',
+   ],
+  ],
  'eventsextras_roles' => [
    'name' => 'eventsextras_roles',
    'title' => ts('Default Role'),
