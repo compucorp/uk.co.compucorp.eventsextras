@@ -151,7 +151,7 @@ function eventsextras_civicrm_preProcess($formName, &$form) {
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_navigationMenu
  */
 function eventsextras_civicrm_navigationMenu(&$menu) {
-  _eventsextras_civix_insert_navigation_menu($menu, 'Administer/', array(
+  _eventsextras_civix_insert_navigation_menu($menu, 'Administer/CiviEvent', array(
     'label' => E::ts('Events Extras Settings'),
     'name' => 'events_extras_settings',
     'url' => 'civicrm/admin/setting/preferences/eventsextras',
@@ -160,4 +160,4 @@ function eventsextras_civicrm_navigationMenu(&$menu) {
     'separator' => 0,
   ));
   _eventsextras_civix_navigationMenu($menu);
-} 
+}
