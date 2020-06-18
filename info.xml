@@ -5,8 +5,8 @@
   <description>This extensions allows CiviCRM admin to config generic Event pages</description>
   <license>AGPL-3.0</license>
   <maintainer>
-    <author>Compucropt Ltd.</author>
-    <email>hello@compucorp.co.ukk</email>
+    <author>Compucorp Ltd.</author>
+    <email>hello@compucorp.co.uk</email>
   </maintainer>
   <urls>
     <url desc="Main Extension Page">https://github.com/compucorp/uk.co.compucorp.eventsextras</url>
