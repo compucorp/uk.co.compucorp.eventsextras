@@ -258,7 +258,7 @@ return [
     'help_text' => '',
     'extra_attributes' => [
       'section' => SettingsManager::EVENT_REGISTRATION,
-      'parent_setting' => SettingsManager::SETTING_FIELDS['ALLOW_SELF_SERIVCE'],
+      'parent_setting' => SettingsManager::SETTING_FIELDS['ALLOW_SELF_SERVICE'],
       'event_form_element_name' => 'allow_selfcancelxfer',
     ],
   ],
@@ -277,7 +277,7 @@ return [
     'help_text' => '',
     'extra_attributes' => [
       'section' => SettingsManager::EVENT_REGISTRATION,
-      'parent_setting' => SettingsManager::SETTING_FIELDS['ALLOW_SELF_SERIVCE'],
+      'parent_setting' => SettingsManager::SETTING_FIELDS['ALLOW_SELF_SERVICE'],
       'event_form_element_name' => 'selfcancelxfer_time',
     ],
   ],

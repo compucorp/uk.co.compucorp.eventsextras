@@ -20,7 +20,6 @@ class CRM_ManualDirectDebit_Common_SettingsManagerTest extends BaseHeadlessTest 
     $this->assertNotEmpty($locationTab);
   }
 
-
   /**
    * Tests getSettingsValue
    */
@@ -32,7 +31,6 @@ class CRM_ManualDirectDebit_Common_SettingsManagerTest extends BaseHeadlessTest 
     $this->assertArrayHasKey(SettingsManager::SETTING_FIELDS['PCP_TAB'], $settings);
     $this->assertArrayHasKey(SettingsManager::SETTING_FIELDS['ROLES'], $settings);
     $this->assertArrayHasKey(SettingsManager::SETTING_FIELDS['PAYMENT_PROCESSOR_SELECTION_DEFAULT'], $settings);
-
   }
 
   /**
@@ -70,6 +68,5 @@ class CRM_ManualDirectDebit_Common_SettingsManagerTest extends BaseHeadlessTest 
     $this->assertNotEmpty($configFields);
     $this->assertEquals(8, count($configFields));
   }
-
 
 }

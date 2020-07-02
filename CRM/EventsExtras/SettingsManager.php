@@ -23,7 +23,7 @@ class CRM_EventsExtras_SettingsManager {
     'PARTICIPANT_LISTING' => 'eventsextras_participant_listing',
     'PARTICIPANT_LISTING_DEFAULT' => 'eventsextras_participant_listing_default',
     'PARTICIPANT_SUMMARY' => 'eventsextras_event_summary',
-    'EVENT_DESCRTIPTION' => 'eventsextras_event_description',
+    'EVENT_DESCRIPTION' => 'eventsextras_event_description',
     'INCLUDE_MAP_LOCATION_EVENT' => 'eventsextras_include_map_event_location',
     'INCLUDE_MAP_LOCATION_EVENT_DEFAULT' => 'eventsextras_include_map_event_location_default',
     'INCLUDE_MAP_PUBLIC_EVENT' => 'eventsextras_public_event',
@@ -39,11 +39,11 @@ class CRM_EventsExtras_SettingsManager {
     'PAY_LATER_OPTION_DEFAULT_BILLING_ADDRESS' => 'eventsextras_enable_pay_later_option_default_billing_address_required',
     'PENDING_PARTICIPANT_EXPIRATION' => 'eventsextras_pending_participant_expiration',
     'PENDING_PARTICIPANT_EXPIRATION_DEFAULT' => 'eventsextras_pending_participant_expiration_default',
-    'ALLOW_SELF_SERIVCE' => 'eventsextras_allow_self_service',
+    'ALLOW_SELF_SERVICE' => 'eventsextras_allow_self_service',
     'ALLOW_SELF_SERVICE_DEFAULT' => 'eventsextras_allow_self_service_default',
     'ALLOW_SELF_SERVICE_DEFAULT_TIME_LIMIT' => 'eventsextras_allow_self_service_default_time_limit',
     'REGISTER_MULTIPLE_PARTICIPANTS' => 'eventsextras_register_multiple_participants',
-    'REGISTER_MULTIPLE_PARTICIPANTS_DEFULT' => 'eventsextras_register_multiple_participants_default',
+    'REGISTER_MULTIPLE_PARTICIPANTS_DEFAULT' => 'eventsextras_register_multiple_participants_default',
     'REGISTER_MULTIPLE_PARTICIPANTS_DEFAULT_MAXIMUM_PARTICIPANT' => 'eventsextras_register_multiple_participants_default_maximum_participant',
   ];
 

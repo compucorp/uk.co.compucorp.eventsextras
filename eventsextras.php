@@ -206,4 +206,4 @@ function eventsextras_civicrm_navigationMenu(&$menu) {
     'separator' => 0,
   ));
   _eventsextras_civix_navigationMenu($menu);
-} 
+}
