@@ -101,16 +101,20 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
   public function postProcess() {
     $configFields = SettingsManager::getConfigFields();
     $submittedValues = $this->exportValues();
+
     $valuesToSave  = [];
     if (isset($submittedValues[SettingsManager::SETTING_FIELDS['PAYMENT_PROCESSOR_SELECTION_DEFAULT']])) {
       $paymentProcessors = $submittedValues[SettingsManager::SETTING_FIELDS['PAYMENT_PROCESSOR_SELECTION_DEFAULT']];
+
       //flip selected default paymentProcessors before saving to setting
       $flipedPaymentProcessor = [];
       foreach ($paymentProcessors as $selectValue => $selected){
         $flipedPaymentProcessor[] = $selectValue;
       }
+
       $submittedValues[SettingsManager::SETTING_FIELDS['PAYMENT_PROCESSOR_SELECTION_DEFAULT']] = $flipedPaymentProcessor;
     }
+
     $valuesToSave = array_intersect_key($submittedValues, $configFields);
     //makesure uncheck checkecbox value is set to default into setting
     //when user select hide but did not select the default.
@@ -164,7 +168,7 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
       E::ts($setting['title']),
       array_flip($paymentProcessor),
       NULL, NULL, NULL, NULL,
-      array('&nbsp;&nbsp;', '&nbsp;&nbsp;', '&nbsp;&nbsp;', '<br/>')
+      ['&nbsp;&nbsp;', '&nbsp;&nbsp;', '&nbsp;&nbsp;', '<br/>']
     );
   }
 
@@ -236,6 +240,10 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
     foreach ($currentValues['values'][$domainID] as $name => $value) {
       $defaults[$name] = $value;
     }
+
+    $defaults['eventsextras_payment_processor_selection_default'] =
+      array_fill_keys($defaults['eventsextras_payment_processor_selection_default'], '1');
+
     return $defaults;
   }
 
