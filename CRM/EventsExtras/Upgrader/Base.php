@@ -1,7 +1,6 @@
 <?php
 
 // AUTO-GENERATED FILE -- Civix may overwrite any changes made to this file
-use CRM_EventsExtras_ExtensionUtil as E;
 
 /**
  * Base class which provides helpers to execute upgrade logic
@@ -9,7 +8,7 @@ use CRM_EventsExtras_ExtensionUtil as E;
 class CRM_EventsExtras_Upgrader_Base {
 
   /**
-   * @var varies, subclass of this
+   * @var variessubclassofthis
    */
   static $instance;
 
@@ -19,22 +18,22 @@ class CRM_EventsExtras_Upgrader_Base {
   protected $ctx;
 
   /**
-   * @var string, eg 'com.example.myextension'
+   * @var stringegcomexamplemyextension
    */
   protected $extensionName;
 
   /**
-   * @var string, full path to the extension's source tree
+   * @var stringfullpathtotheextensionssourcetree
    */
   protected $extensionDir;
 
   /**
-   * @var array(revisionNumber) sorted numerically
+   * @var arrayrevisionNumbersortednumerically
    */
   private $revisions;
 
   /**
-   * @var boolean
+   * @var bool
    *   Flag to clean up extension revision data in civicrm_setting
    */
   private $revisionStorageIsDeprecated = FALSE;
@@ -42,7 +41,7 @@ class CRM_EventsExtras_Upgrader_Base {
   /**
    * Obtain a reference to the active upgrade handler.
    */
-  static public function instance() {
+  public static function instance() {
     if (!self::$instance) {
       // FIXME auto-generate
       self::$instance = new CRM_EventsExtras_Upgrader(
@@ -63,7 +62,7 @@ class CRM_EventsExtras_Upgrader_Base {
    * CRM_EventsExtras_Upgrader_Base::_queueAdapter($ctx, 'methodName', 'arg1', 'arg2');
    * @endcode
    */
-  static public function _queueAdapter() {
+  public static function _queueAdapter() {
     $instance = self::instance();
     $args = func_get_args();
     $instance->ctx = array_shift($args);
