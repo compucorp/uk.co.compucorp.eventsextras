@@ -17,7 +17,7 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
    * @var array[]
    */
   private $displaySections = [
-    SettingsManager::EVENT_TAB=> ['title' => 'Tab Settings'],
+    SettingsManager::EVENT_TAB => ['title' => 'Tab Settings'],
     SettingsManager::EVENT_INFO => ['title' => 'Info Settings'],
     SettingsManager::EVENT_FEE => ['title' => 'Fee Settings'],
     SettingsManager::EVENT_REGISTRATION => ['title' => 'Online Registration Settings'],
@@ -31,10 +31,12 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
     CRM_Utils_System::setTitle(E::ts('CiviEvent Extras Settings'));
     $configFields = SettingsManager::getConfigFields();
     foreach ($configFields as $name => $config) {
-      if (!array_key_exists('parent_setting', $config['extra_attributes'])){
-       $this->addChildElement($name, $config);
-      } else { //handle default setting form
-       $this->addParentElement($config);
+      if (!array_key_exists('parent_setting', $config['extra_attributes'])) {
+        $this->addChildElement($name, $config);
+        //handle default setting form
+      }
+      else {
+        $this->addParentElement($config);
       }
       $this->assignConfigSections($name, $config['extra_attributes']['section']);
     }
@@ -60,8 +62,7 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
     $this->addFormRule(['CRM_EventsExtras_Form_Settings', 'validateRules']);
   }
 
-
-   /**
+  /**
    * This functaion is for validating EventsExtras Setting Form
    *
    * @param array $values
@@ -72,9 +73,9 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
     $roles = SettingsManager::SETTING_FIELDS['ROLES'];
     $rolesDefault = SettingsManager::SETTING_FIELDS['ROLES_DEFAULT'];
     $paymentProcessor = SettingsManager::SETTING_FIELDS['PAYMENT_PROCESSOR_SELECTION'];
-    $paymentProcessorDefault =SettingsManager::SETTING_FIELDS['PAYMENT_PROCESSOR_SELECTION_DEFAULT'];
+    $paymentProcessorDefault = SettingsManager::SETTING_FIELDS['PAYMENT_PROCESSOR_SELECTION_DEFAULT'];
     $payLaterOption = SettingsManager::SETTING_FIELDS['PAY_LATER_OPTION'];
-    $paylaterOptionDefault= SettingsManager::SETTING_FIELDS['PAY_LATER_OPTION_DEFAULT'];
+    $paylaterOptionDefault = SettingsManager::SETTING_FIELDS['PAY_LATER_OPTION_DEFAULT'];
     $payLaterLabel = SettingsManager::SETTING_FIELDS['PAY_LATER_OPTION_DEFAULT_LABEL'];
     $payLaterInsuection = SettingsManager::SETTING_FIELDS['PAY_LATER_OPTION_DEFAULT_LABEL_INSTRUCTION'];
 
@@ -82,15 +83,15 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
       $errors[$rolesDefault] = E::ts('Default Role is a required field');
     }
 
-    if ($values[$paymentProcessor] == 0 && !isset($values[$paymentProcessorDefault])){
+    if ($values[$paymentProcessor] == 0 && !isset($values[$paymentProcessorDefault])) {
       $errors[$paymentProcessorDefault] = E::ts('Please select at least one payment processor and/or enable the pay later option.');
     }
 
-    if ($values[$payLaterOption] == 0 && isset($values[$paylaterOptionDefault]) && $values[$paylaterOptionDefault] == 1){
-      if ($values[$payLaterLabel] == NULL){
+    if ($values[$payLaterOption] == 0 && isset($values[$paylaterOptionDefault]) && $values[$paylaterOptionDefault] == 1) {
+      if ($values[$payLaterLabel] == NULL) {
         $errors[$payLaterLabel] = E::ts(' Please enter the Pay Later prompt to be displayed on the Registration form.');
       }
-      if ($values[$payLaterInsuection] == NULL){
+      if ($values[$payLaterInsuection] == NULL) {
         $errors[$payLaterInsuection] = E::ts('Please enter the Pay Later instructions to be displayed to your users.');
       }
     }
@@ -102,13 +103,13 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
     $configFields = SettingsManager::getConfigFields();
     $submittedValues = $this->exportValues();
 
-    $valuesToSave  = [];
+    $valuesToSave = [];
     if (isset($submittedValues[SettingsManager::SETTING_FIELDS['PAYMENT_PROCESSOR_SELECTION_DEFAULT']])) {
       $paymentProcessors = $submittedValues[SettingsManager::SETTING_FIELDS['PAYMENT_PROCESSOR_SELECTION_DEFAULT']];
 
       //flip selected default paymentProcessors before saving to setting
       $flipedPaymentProcessor = [];
-      foreach ($paymentProcessors as $selectValue => $selected){
+      foreach ($paymentProcessors as $selectValue => $selected) {
         $flipedPaymentProcessor[] = $selectValue;
       }
 
@@ -118,41 +119,44 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
     $valuesToSave = array_intersect_key($submittedValues, $configFields);
     //makesure uncheck checkecbox value is set to default into setting
     //when user select hide but did not select the default.
-    foreach ($configFields as $field => $config){
-      if (!isset($submittedValues[$field])){
+    foreach ($configFields as $field => $config) {
+      if (!isset($submittedValues[$field])) {
         $valuesToSave[$field] = $config['default'];
       }
     }
     $result = civicrm_api3('setting', 'create', $valuesToSave);
     $session = CRM_Core_Session::singleton();
-    if ($result['is_error']== 0){
-      $session->setStatus(E::ts('Settings have been saved'),E::ts('Events Extra Settings'), 'success');
-    } else{
-      $session->setStatus(E::ts('Settings could not be saved, please contact Administrator'),E::ts('Events Extra Settings'), 'error');
+    if ($result['is_error'] == 0) {
+      $session->setStatus(E::ts('Settings have been saved'), E::ts('Events Extra Settings'), 'success');
+    }
+    else {
+      $session->setStatus(E::ts('Settings could not be saved, please contact Administrator'), E::ts('Events Extra Settings'), 'error');
     }
   }
 
-   /**
+  /**
    * Add html element to the form for parent default setting.
    *
    * @param array $config
    */
-  private function addParentElement($config){
+  private function addParentElement($config) {
     if ($config['html_type'] == 'select') {
       $this->generateDefaultSelectList($config);
-    } else {
+    }
+    else {
       $this->generateDefaultSettingField($config);
     }
     $this->defaultSettingsDescription[$config['name']] = $config['description'];
     $this->defaultSettingsHelp[$config['name']] = $config['is_help'];
   }
 
-   /**
+  /**
    * Add html element to the form for child a default (global) setting.
    *
+   * @param $name
    * @param array $config
    */
-  private function addChildElement($name, $config){
+  private function addChildElement($name, $config) {
     $this->addRadio(
       $name,
       E::ts($config['title']),
@@ -161,7 +165,7 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
     $this->parentSettings[$config['name']] = TRUE;
   }
 
-  private function generatePaymentProcessorField($setting){
+  private function generatePaymentProcessorField($setting) {
     $paymentProcessor = CRM_Core_PseudoConstant::paymentProcessor();
     $this->addCheckBox(
       $setting['name'],
@@ -172,48 +176,51 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
     );
   }
 
-   /**
+  /**
    * Generate a default Setting field to the form.
    *
-   * @param array $field
+   * @param array $setting
    */
   private function generateDefaultSettingField($setting) {
-    if ($setting['name'] ==  SettingsManager::SETTING_FIELDS['PAYMENT_PROCESSOR_SELECTION_DEFAULT']) {
+    if ($setting['name'] == SettingsManager::SETTING_FIELDS['PAYMENT_PROCESSOR_SELECTION_DEFAULT']) {
       $this->generatePaymentProcessorField($setting);
-    } else {
+    }
+    else {
       $this->add(
         $setting['html_type'],
         $setting['name'],
         E::ts($setting['title'])
-      );
+          );
     }
   }
 
-   /**
+  /**
    * Generate select options from settings.
    *
    * @param array $setting
    */
   private function generateDefaultSelectList($setting) {
     $options = [];
-    if (!empty($setting['pseudoconstant']['optionGroupName'])){
+    if (!empty($setting['pseudoconstant']['optionGroupName'])) {
       $values = civicrm_api3('OptionGroup', 'get', [
         'sequential' => 1,
-        'name' =>  $setting['pseudoconstant']['optionGroupName'],
-        'api.OptionValue.get' => ['
+        'name' => $setting['pseudoconstant']['optionGroupName'],
+        'api.OptionValue.get' => [
+          '
           option_group_id' => 'id',
           'options' => [
             'limit' => 0,
           ],
-          'return' => ['value', 'label']
-        ]
+          'return' => ['value', 'label'],
+        ],
       ])['values'][0]['api.OptionValue.get']['values'];
-      foreach ($values as $value){
+      foreach ($values as $value) {
         $options[$value['value']] = $value['label'];
       }
-    } else if ($setting['name'] == SettingsManager::SETTING_FIELDS['REGISTER_MULTIPLE_PARTICIPANTS_DEFAULT_MAXIMUM_PARTICIPANT']){
-       // for default maxinum participant
-       foreach (range(1, 9) as $value){
+    }
+    elseif ($setting['name'] == SettingsManager::SETTING_FIELDS['REGISTER_MULTIPLE_PARTICIPANTS_DEFAULT_MAXIMUM_PARTICIPANT']) {
+      // for default maxinum participant
+      foreach (range(1, 9) as $value) {
         $options[$value] = $value;
       }
     }
@@ -272,4 +279,5 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
         break;
     }
   }
+
 }
