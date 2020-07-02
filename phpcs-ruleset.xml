@@ -4,5 +4,6 @@
   <rule ref="bin/civicrm/coder/coder_sniffer/Drupal">
     <exclude-pattern>tests/phpunit/bootstrap.php</exclude-pattern>
     <exclude-pattern>eventsextras.civix.php</exclude-pattern>
+    <exclude-pattern>CRM/EventsExtras/Upgrader/Base.php</exclude-pattern>
   </rule>
 </ruleset>
