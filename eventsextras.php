@@ -8,7 +8,7 @@ use CRM_EventsExtras_ExtensionUtil as E;
  *
  * @link hhttps://docs.civicrm.org/dev/en/latest/hooks/hook_civicrm_buildForm/
  */
-function eventsextras_civicrm_buildForm($formName, &$form){
+function eventsextras_civicrm_buildForm($formName, &$form) {
   $listeners = [
     new CRM_EventsExtras_Hook_BuildForm_EventTabHeader(),
     new CRM_EventsExtras_Hook_BuildForm_EventInfo(),
@@ -25,7 +25,7 @@ function eventsextras_civicrm_buildForm($formName, &$form){
  *
  * @link hhttps://docs.civicrm.org/dev/en/latest/hooks/hook_civicrm_pre/
  */
-function eventsextras_civicrm_pre($op, $objectName, $id, &$params){
+function eventsextras_civicrm_pre($op, $objectName, $id, &$params) {
   $listeners = [
     new CRM_EventsExtras_Hook_Pre_ManageEvent(),
   ];
@@ -41,10 +41,10 @@ function eventsextras_civicrm_pre($op, $objectName, $id, &$params){
  */
 function eventsextras_civicrm_tab(&$tabs, $contactID) {
   /*$listeners = [
-    new CRM_EventsExtras_Hook_Pre_ManageEvent(),
+  new CRM_EventsExtras_Hook_Pre_ManageEvent(),
   ];
   foreach ($listeners as $currentListener) {
-    $currentListener->handle((&$tabs, $contactID);
+  $currentListener->handle((&$tabs, $contactID);
   }*/
 
 }
@@ -187,8 +187,8 @@ function eventsextras_civicrm_entityTypes(&$entityTypes) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_preProcess
  *
-function eventsextras_civicrm_preProcess($formName, &$form) {
-
+ * function eventsextras_civicrm_preProcess($formName, &$form) {
+ *
 } // */
 
 /**
@@ -197,7 +197,7 @@ function eventsextras_civicrm_preProcess($formName, &$form) {
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_navigationMenu
  */
 function eventsextras_civicrm_navigationMenu(&$menu) {
-  _eventsextras_civix_insert_navigation_menu($menu, 'Administer/CiviEvent', array(
+  _eventsextras_civix_insert_navigation_menu($menu, 'Administer/', array(
     'label' => E::ts('Events Extras Settings'),
     'name' => 'events_extras_settings',
     'url' => 'civicrm/admin/setting/preferences/eventsextras',

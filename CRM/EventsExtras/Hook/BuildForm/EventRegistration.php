@@ -8,9 +8,8 @@ use CRM_EventsExtras_SettingsManager as SettingsManager;
 class CRM_EventsExtras_Hook_BuildForm_EventRegistration extends CRM_EventsExtras_Hook_BuildForm_BaseEvent {
 
   /**
-  *
-  * @param string $eventTab
-  */
+   * CRM_EventsExtras_Hook_BuildForm_EventRegistration constructor.
+   */
   public function __construct() {
     parent::__construct(SettingsManager::EVENT_REGISTRATION);
   }
@@ -27,4 +26,5 @@ class CRM_EventsExtras_Hook_BuildForm_EventRegistration extends CRM_EventsExtras
     }
     $this->hideField($form);
   }
+
 }

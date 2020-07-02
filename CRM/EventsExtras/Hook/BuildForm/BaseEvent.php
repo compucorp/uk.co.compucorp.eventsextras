@@ -10,6 +10,7 @@ abstract class CRM_EventsExtras_Hook_BuildForm_BaseEvent {
 
   /**
    * Event tab to display on the form
+   * @var eventTab
    */
   protected $eventTab;
 
@@ -19,7 +20,7 @@ abstract class CRM_EventsExtras_Hook_BuildForm_BaseEvent {
    * @param string $eventTab
    *
    */
-  protected function __construct($eventTab){
+  protected function __construct($eventTab) {
     $this->eventTab = $eventTab;
     $this->addEventTabTemplate();
   }
@@ -30,7 +31,7 @@ abstract class CRM_EventsExtras_Hook_BuildForm_BaseEvent {
    * @param string $formName
    * @param CRM_Core_Form $form
    */
-  abstract function handle($formName, &$form);
+  abstract public function handle($formName, &$form);
 
   /**
    * Checks if the hook should be handled.
@@ -53,7 +54,7 @@ abstract class CRM_EventsExtras_Hook_BuildForm_BaseEvent {
    * @param array $form
    *
    */
-  protected function hideField(CRM_Event_Form_ManageEvent &$form){
+  protected function hideField(&$form) {
     $configFields = SettingsManager::getConfigFields($this->eventTab);
     $settingsValue = SettingsManager::getSettingsValue();
     $hiddenFields = [];
@@ -62,18 +63,18 @@ abstract class CRM_EventsExtras_Hook_BuildForm_BaseEvent {
       $configNameExists = isset($settingsValue[$config['name']]);
       $configNameIsZero = $settingsValue[$config['name']] == 0;
       $cssClassExists = array_key_exists('css_class', $config['extra_attributes']);
-     if ($configNameExists && $configNameIsZero && $cssClassExists){
+      if ($configNameExists && $configNameIsZero && $cssClassExists) {
         $hiddenFields[] = $config['extra_attributes']['css_class'];
       }
     }
     $form->assign('hiddenCssClasses', $hiddenFields);
   }
 
-  private function addEventTabTemplate(){
+  private function addEventTabTemplate() {
     $templatePath = E::path() . '/templates/CRM/EventsExtras/Form/EventTabs.tpl';
     CRM_Core_Region::instance('page-body')->add([
-      'template' => "{$templatePath}"
+      'template' => "{$templatePath}",
     ]);
   }
-}
 
+}

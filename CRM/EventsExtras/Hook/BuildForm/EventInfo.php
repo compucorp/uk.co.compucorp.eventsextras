@@ -7,15 +7,14 @@ use CRM_EventsExtras_SettingsManager as SettingsManager;
  */
 class CRM_EventsExtras_Hook_BuildForm_EventInfo extends CRM_EventsExtras_Hook_BuildForm_BaseEvent {
 
- /**
-  *
-  * @param string $eventTab
-  */
+  /**
+   * CRM_EventsExtras_Hook_BuildForm_EventInfo constructor.
+   */
   public function __construct() {
     parent::__construct(SettingsManager::EVENT_INFO);
   }
 
-   /**
+  /**
    * Hides options on the Event Info page
    *
    * @param string $formName
@@ -30,26 +29,25 @@ class CRM_EventsExtras_Hook_BuildForm_EventInfo extends CRM_EventsExtras_Hook_Bu
   }
 
   private function buildForm($formName, &$form) {
-   $this->setDefaults($form);
+    $this->setDefaults($form);
   }
 
-    /**
+  /**
    * Set defaults for form.
    *
    * @param array $form
    *
    */
-  private function setDefaults(&$form){
+  private function setDefaults(&$form) {
     $defaults = [];
     $role = SettingsManager::SETTING_FIELDS['ROLES'];
     $roleDefault = SettingsManager::SETTING_FIELDS['ROLES_DEFAULT'];
     $settings = [$role, $roleDefault];
     $settingValues = SettingsManager::getSettingsValue($settings);
-    if ($settingValues[$role] == 0){
+    if ($settingValues[$role] == 0) {
       $defaults['default_role_id'] = $settingValues[$roleDefault];
     }
     $form->setDefaults($defaults);
   }
 
 }
-
