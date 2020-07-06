@@ -82,7 +82,7 @@ class CRM_EventsExtras_Hook_Pre_ManageEvent {
       }
     }
     foreach ($fieldToProcess as $field => $value) {
-      if ($section != SettingsManager::EVENT_FEE && $field != 'payment_processor') {
+      if ($field != 'payment_processor') {
         $params[$field] = $value;
       }
     }
