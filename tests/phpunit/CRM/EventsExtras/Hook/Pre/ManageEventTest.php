@@ -12,7 +12,6 @@ require_once __DIR__ . '/../../../../BaseHeadlessTest.php';
  */
 class CRM_EventsExtras_Hook_Pre_ManageEventTest extends BaseHeadlessTest {
 
-
   public function testEventInfo() {
 
     //fake params
@@ -39,7 +38,7 @@ class CRM_EventsExtras_Hook_Pre_ManageEventTest extends BaseHeadlessTest {
     ]);
 
     //make sure participant listing default is set
-    $participantListingDefault = SettingsManager::getSettingValue( SettingsManager::SETTING_FIELDS['PARTICIPANT_LISTING_DEFAULT']);
+    $participantListingDefault = SettingsManager::getSettingValue(SettingsManager::SETTING_FIELDS['PARTICIPANT_LISTING_DEFAULT']);
     $this->assertEquals(1, $participantListingDefault[SettingsManager::SETTING_FIELDS['PARTICIPANT_LISTING_DEFAULT']]);
 
     $preManageEventHook = new CRM_EventsExtras_Hook_Pre_ManageEvent();
@@ -92,7 +91,7 @@ class CRM_EventsExtras_Hook_Pre_ManageEventTest extends BaseHeadlessTest {
   public function testEventOnlineRegistration() {
 
     $params = [
-      'is_online_registration'=> 1,
+      'is_online_registration' => 1,
       'expiration_time' => NULL,
       'allow_selfcancelxfer' => NULL,
       'selfcancelxfer_time' => NULL,
@@ -121,4 +120,5 @@ class CRM_EventsExtras_Hook_Pre_ManageEventTest extends BaseHeadlessTest {
     $this->assertEquals(9, $params['max_additional_participants']);
 
   }
+
 }
