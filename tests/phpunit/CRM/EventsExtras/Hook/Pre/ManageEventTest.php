@@ -30,8 +30,8 @@ class CRM_EventsExtras_Hook_Pre_ManageEventTest extends BaseHeadlessTest {
       SettingsManager::SETTING_FIELDS['INCLUDE_MAP_PUBLIC_EVENT_DEFAULT'] => 1,
     ]);
 
-    //Fabricate settings if user to show field and default value was set.
-    //In this case default should not be assigned to to the param;
+    //Fabricate settings if user select to show field and default value was set.
+    //In this case default should not be assigned to the param;
     SettingFabricator::fabricate([
       SettingsManager::SETTING_FIELDS['PARTICIPANT_LISTING'] => 1,
       SettingsManager::SETTING_FIELDS['PARTICIPANT_LISTING_DEFAULT'] => 1,
@@ -47,7 +47,7 @@ class CRM_EventsExtras_Hook_Pre_ManageEventTest extends BaseHeadlessTest {
     $this->assertEquals(1, $params['is_public']);
     $this->assertEquals(1, $params['is_map']);
 
-    $this->assertNull(NULL);
+    $this->assertNull($params['participant_listing_id']);
 
   }
 

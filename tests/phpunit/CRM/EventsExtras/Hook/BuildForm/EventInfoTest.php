@@ -17,12 +17,6 @@ class CRM_EventsExtras_Hook_BuildForm_EventInfoTest extends BaseHeadlessTest {
    */
   private $eventInfoForm;
 
-  public function setUp() {
-    $formController = new CRM_Core_Controller();
-    $this->eventInfoForm = new CRM_Event_Form_ManageEvent_EventInfo();
-    $this->eventInfoForm->controller = $formController;
-  }
-
   public function testSetDefault() {
     $formController = new CRM_Core_Controller();
     $eventInfoForm = new CRM_Event_Form_ManageEvent_EventInfo();
