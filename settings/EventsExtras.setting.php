@@ -25,7 +25,7 @@ return [
   ],
   'eventsextras_tell_friend_tab' => [
     'name' => 'eventsextras_tell_friend_tab',
-    'title' => ts('Tell Friend Tab'),
+    'title' => ts('Tell a Friend Tab'),
     'type' => 'Boolean',
     'quick_form_type' => 'YesNo',
     'default' => TRUE,
@@ -42,7 +42,7 @@ return [
   ],
   'eventsextras_pcp_tab' => [
     'name' => 'eventsextras_pcp_tab',
-    'title' => ts('Personal Compaings Tab'),
+    'title' => ts('Personal Campaigns Tab'),
     'type' => 'Boolean',
     'quick_form_type' => 'YesNo',
     'default' => TRUE,
