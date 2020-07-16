@@ -35,21 +35,6 @@ function eventsextras_civicrm_pre($op, $objectName, $id, &$params) {
 }
 
 /**
- * Implements hook_civicrm_pre().
- *
- * @link hhttps://docs.civicrm.org/dev/en/latest/hooks/hook_civicrm_tab/
- */
-function eventsextras_civicrm_tab(&$tabs, $contactID) {
-  /*$listeners = [
-  new CRM_EventsExtras_Hook_Pre_ManageEvent(),
-  ];
-  foreach ($listeners as $currentListener) {
-  $currentListener->handle((&$tabs, $contactID);
-  }*/
-
-}
-
-/**
  * Implements hook_civicrm_config().
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_config
@@ -179,17 +164,6 @@ function eventsextras_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
 function eventsextras_civicrm_entityTypes(&$entityTypes) {
   _eventsextras_civix_civicrm_entityTypes($entityTypes);
 }
-
-// --- Functions below this ship commented out. Uncomment as required. ---
-
-/**
- * Implements hook_civicrm_preProcess().
- *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_preProcess
- *
- * function eventsextras_civicrm_preProcess($formName, &$form) {
- *
-} // */
 
 /**
  * Implements hook_civicrm_navigationMenu().
