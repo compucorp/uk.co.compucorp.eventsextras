@@ -51,23 +51,29 @@ class CRM_EventsExtras_Hook_BuildForm_EventInfo extends CRM_EventsExtras_Hook_Bu
     }
 
     $showParticipantListing = SettingsManager::SETTING_FIELDS['PARTICIPANT_LISTING'];
-    $settings = [$showParticipantListing];
+    $participantListingDefault = SettingsManager::SETTING_FIELDS['PARTICIPANT_LISTING_DEFAULT'];
+    $settings = [$showParticipantListing, $participantListingDefault];
     $settingValues = SettingsManager::getSettingsValue($settings);
     if ($settingValues[$showParticipantListing] == 0) {
+      $defaults['participant_listing_id'] = $settingValues[$participantListingDefault];
       $fieldIdsToHide[] = 'participant_listing_id';
     }
 
     $showIncludeMap = SettingsManager::SETTING_FIELDS['INCLUDE_MAP_LOCATION_EVENT'];
-    $settings = [$showIncludeMap];
+    $includeMapDefault = SettingsManager::SETTING_FIELDS['INCLUDE_MAP_LOCATION_EVENT_DEFAULT'];
+    $settings = [$showIncludeMap, $includeMapDefault];
     $settingValues = SettingsManager::getSettingsValue($settings);
     if ($settingValues[$showIncludeMap] == 0) {
+      $defaults['is_map'] = $settingValues[$includeMapDefault];
       $fieldIdsToHide[] = 'is_map';
     }
 
     $showPublicEvent = SettingsManager::SETTING_FIELDS['INCLUDE_MAP_PUBLIC_EVENT'];
-    $settings = [$showPublicEvent];
+    $publicEventDefault = SettingsManager::SETTING_FIELDS['INCLUDE_MAP_PUBLIC_EVENT_DEFAULT'];
+    $settings = [$showPublicEvent, $publicEventDefault];
     $settingValues = SettingsManager::getSettingsValue($settings);
     if ($settingValues[$showPublicEvent] == 0) {
+      $defaults['is_public'] = $settingValues[$publicEventDefault];
       $fieldIdsToHide[] = 'is_public';
     }
 

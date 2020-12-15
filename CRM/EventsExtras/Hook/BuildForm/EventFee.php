@@ -47,16 +47,26 @@ class CRM_EventsExtras_Hook_BuildForm_EventFee extends CRM_EventsExtras_Hook_Bui
     }
 
     $showCurrency = SettingsManager::SETTING_FIELDS['CURRENCY'];
-    $settings = [$showCurrency];
+    $currencyDefault = SettingsManager::SETTING_FIELDS['CURRENCY_DEFAULT'];
+    $settings = [$showCurrency, $currencyDefault];
     $settingValues = SettingsManager::getSettingsValue($settings);
     if ($settingValues[$showCurrency] == 0) {
+      $defaults['currency'] = $settingValues[$currencyDefault];
       $fieldIdsToHide[] = 'currency';
     }
 
     $showPayLater = SettingsManager::SETTING_FIELDS['PAY_LATER_OPTION'];
-    $settings = [$showPayLater];
+    $payLaterDefault = SettingsManager::SETTING_FIELDS['PAY_LATER_OPTION_DEFAULT'];
+    $payLaterLabel = SettingsManager::SETTING_FIELDS['PAY_LATER_OPTION_DEFAULT_LABEL'];
+    $payLaterInstruction = SettingsManager::SETTING_FIELDS['PAY_LATER_OPTION_DEFAULT_LABEL_INSTRUCTION'];
+    $payLaterBillingAddress = SettingsManager::SETTING_FIELDS['PAY_LATER_OPTION_DEFAULT_BILLING_ADDRESS'];
+    $settings = [$showPayLater, $payLaterDefault, $payLaterLabel, $payLaterInstruction, $payLaterBillingAddress];
     $settingValues = SettingsManager::getSettingsValue($settings);
     if ($settingValues[$showPayLater] == 0) {
+      $defaults['is_pay_later'] = $settingValues[$payLaterDefault];
+      $defaults['pay_later_text'] = $settingValues[$payLaterLabel];
+      $defaults['pay_later_receipt'] = $settingValues[$payLaterInstruction];
+      $defaults['is_billing_required'] = $settingValues[$payLaterBillingAddress];
       $fieldIdsToHide[] = 'is_pay_later';
       $fieldIdsToHide[] = 'pay_later_text';
       $fieldIdsToHide[] = 'pay_later_receipt';

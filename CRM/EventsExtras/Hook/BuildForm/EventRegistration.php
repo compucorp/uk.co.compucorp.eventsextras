@@ -36,16 +36,23 @@ class CRM_EventsExtras_Hook_BuildForm_EventRegistration extends CRM_EventsExtras
     $fieldIdsToHide = [];
 
     $showPendingParticipantExpiration = SettingsManager::SETTING_FIELDS['PENDING_PARTICIPANT_EXPIRATION'];
-    $settings = [$showPendingParticipantExpiration];
+    $pendingParticipantExpirationDefault = SettingsManager::SETTING_FIELDS['PENDING_PARTICIPANT_EXPIRATION_DEFAULT'];
+    $settings = [$showPendingParticipantExpiration, $pendingParticipantExpirationDefault];
     $settingValues = SettingsManager::getSettingsValue($settings);
     if ($settingValues[$showPendingParticipantExpiration] == 0) {
+      $defaults['expiration_time'] = $settingValues[$pendingParticipantExpirationDefault];
       $fieldIdsToHide[] = 'expiration_time';
     }
 
     $showAllowSelfServiceAction = SettingsManager::SETTING_FIELDS['ALLOW_SELF_SERVICE'];
-    $settings = [$showAllowSelfServiceAction];
+    $allowSelfServiceActionDefault = SettingsManager::SETTING_FIELDS['ALLOW_SELF_SERVICE_DEFAULT'];
+    $timeLimit = SettingsManager::SETTING_FIELDS['ALLOW_SELF_SERVICE_DEFAULT_TIME_LIMIT'];
+    $settings = [$showAllowSelfServiceAction, $allowSelfServiceActionDefault, $timeLimit];
     $settingValues = SettingsManager::getSettingsValue($settings);
     if ($settingValues[$showAllowSelfServiceAction] == 0) {
+      $defaults['allow_selfcancelxfer'] = $settingValues[$allowSelfServiceActionDefault];
+      $defaults['selfcancelxfer_time'] = $settingValues[$timeLimit];
+
       // @note allow_selfcancelxfer's parent tr in civicrm/templates/CRM/Event/Form/ManageEvent/Registration.tpl
       // has a missing 'allow' i.e. "crm-event-manage-registration-form-block-selfcancelxfer" (CiviCRM bug)
       $fieldIdsToHide[] = 'selfcancelxfer';
@@ -53,10 +60,15 @@ class CRM_EventsExtras_Hook_BuildForm_EventRegistration extends CRM_EventsExtras
     }
 
     $showRegisterMultipleParticipants = SettingsManager::SETTING_FIELDS['REGISTER_MULTIPLE_PARTICIPANTS'];
-    $settings = [$showRegisterMultipleParticipants];
+    $registerMultipleParticipantsDefault = SettingsManager::SETTING_FIELDS['REGISTER_MULTIPLE_PARTICIPANTS_DEFAULT'];
+    $maximumParticipant = SettingsManager::SETTING_FIELDS['REGISTER_MULTIPLE_PARTICIPANTS_DEFAULT_MAXIMUM_PARTICIPANT'];
+    $settings = [$showRegisterMultipleParticipants, $registerMultipleParticipantsDefault, $maximumParticipant];
     $settingValues = SettingsManager::getSettingsValue($settings);
     if ($settingValues[$showRegisterMultipleParticipants] == 0) {
+      $defaults['is_multiple_registrations'] = $settingValues[$registerMultipleParticipantsDefault];
+      $defaults['max_additional_participants'] = $settingValues[$maximumParticipant];
       $fieldIdsToHide[] = 'is_multiple_registrations';
+
       // @note max_additional_participants's parent tr in civicrm/templates/CRM/Event/Form/ManageEvent/Registration.tpl
       // has a 'maximum' in its name instead of max i.e. "crm-event-manage-registration-form-block-maximum_additional_participants" (CiviCRM bug)
       $fieldIdsToHide[] = 'maximum_additional_participants';
