@@ -62,16 +62,19 @@ class CRM_EventsExtras_Hook_BuildForm_EventRegistration extends CRM_EventsExtras
     $showRegisterMultipleParticipants = SettingsManager::SETTING_FIELDS['REGISTER_MULTIPLE_PARTICIPANTS'];
     $registerMultipleParticipantsDefault = SettingsManager::SETTING_FIELDS['REGISTER_MULTIPLE_PARTICIPANTS_DEFAULT'];
     $maximumParticipant = SettingsManager::SETTING_FIELDS['REGISTER_MULTIPLE_PARTICIPANTS_DEFAULT_MAXIMUM_PARTICIPANT'];
-    $settings = [$showRegisterMultipleParticipants, $registerMultipleParticipantsDefault, $maximumParticipant];
+    $allowSameParticipantEmailsDefault = SettingsManager::SETTING_FIELDS['REGISTER_MULTIPLE_PARTICIPANTS_ALLOW_SAME_PARTICIPANT_EMAILS_DEFAULT'];
+    $settings = [$showRegisterMultipleParticipants, $registerMultipleParticipantsDefault, $maximumParticipant, $allowSameParticipantEmailsDefault];
     $settingValues = SettingsManager::getSettingsValue($settings);
     if ($settingValues[$showRegisterMultipleParticipants] == 0) {
       $defaults['is_multiple_registrations'] = $settingValues[$registerMultipleParticipantsDefault];
       $defaults['max_additional_participants'] = $settingValues[$maximumParticipant];
+      $defaults['allow_same_participant_emails'] = $settingValues[$allowSameParticipantEmailsDefault];
       $fieldIdsToHide[] = 'is_multiple_registrations';
 
       // @note max_additional_participants's parent tr in civicrm/templates/CRM/Event/Form/ManageEvent/Registration.tpl
       // has a 'maximum' in its name instead of max i.e. "crm-event-manage-registration-form-block-maximum_additional_participants" (CiviCRM bug)
       $fieldIdsToHide[] = 'maximum_additional_participants';
+      $fieldIdsToHide[] = 'allow_same_participant_emails';
     }
 
     $this->hideFields($fieldIdsToHide);

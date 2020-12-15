@@ -68,10 +68,16 @@
   {/ts}
 {/htxt}
 
-{htxt id="eventsextras_register_multiple_participants_default_maxinum_participant"}
+{htxt id="eventsextras_register_multiple_participants_default_maximum_participant"}
   {ts}
   Limit the number of additional participants that can be registered in a single booking.
   Eg: if you choose '2' then the lead booker can bring 2 guests;
   there would be a limit of 3 participants in total per booking.
+  {/ts}
+{/htxt}
+
+{htxt id="eventsextras_register_multiple_participants_allow_same_participant_emails_default"}
+  {ts}
+  Check this box to allow a user to register multiple participants using the same email address. Alternatively, if you want additional participants to be registered <strong>without requiring an email address to be entered for each person</strong> - check the "Register multiple participants" option, AND include a profile in this registration form which <strong>includes First Name and Last Name fields</strong>.
   {/ts}
 {/htxt}

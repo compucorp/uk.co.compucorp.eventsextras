@@ -319,4 +319,23 @@ return [
       'event_form_element_name' => 'max_additional_participants',
     ],
   ],
+  'eventsextras_register_multiple_participants_allow_same_participant_emails_default' => [
+    'name' => 'eventsextras_register_multiple_participants_allow_same_participant_emails_default',
+    'title' => ts('Set Default Same email address?	'),
+    'type' => 'Integer',
+    'quick_form_type' => 'Checkbox',
+    'default' => '',
+    'html_type' => 'checkbox',
+    'add' => '1.0',
+    'is_domain' => 1,
+    'is_contact' => 0,
+    'is_help' => TRUE,
+    'description' => ts(''),
+    'help_text' => '',
+    'extra_attributes' => [
+      'section' => SettingsManager::EVENT_REGISTRATION,
+      'parent_setting' => SettingsManager::SETTING_FIELDS['REGISTER_MULTIPLE_PARTICIPANTS'],
+      'event_form_element_name' => 'allow_same_participant_emails',
+    ],
+  ],
 ];
