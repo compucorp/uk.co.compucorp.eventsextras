@@ -24,7 +24,6 @@ class CRM_EventsExtras_Hook_BuildForm_EventFee extends CRM_EventsExtras_Hook_Bui
     if (!$this->shouldHandle($formName, CRM_Event_Form_ManageEvent_Fee::class)) {
       return;
     }
-    $this->hideField($form);
     $this->buildForm($formName, $form);
   }
 
@@ -34,15 +33,45 @@ class CRM_EventsExtras_Hook_BuildForm_EventFee extends CRM_EventsExtras_Hook_Bui
 
   private function setDefaults(&$form) {
     $defaults = [];
-    $paymentProcessor = SettingsManager::SETTING_FIELDS['PAYMENT_PROCESSOR_SELECTION'];
+    $fieldIdsToHide = [];
+
+    $showPaymentProcessor = SettingsManager::SETTING_FIELDS['PAYMENT_PROCESSOR_SELECTION'];
     $paymentProcessorDefault = SettingsManager::SETTING_FIELDS['PAYMENT_PROCESSOR_SELECTION_DEFAULT'];
-    $settings = [$paymentProcessor, $paymentProcessorDefault];
+    $settings = [$showPaymentProcessor, $paymentProcessorDefault];
     $settingValues = SettingsManager::getSettingsValue($settings);
-    if ($settingValues[$paymentProcessor] == 0) {
+    if ($settingValues[$showPaymentProcessor] == 0) {
       $defaultSettingString = implode(CRM_Core_DAO::VALUE_SEPARATOR, $settingValues[$paymentProcessorDefault]);
       $paymentProcessorDefaultValue = (array_fill_keys(explode(CRM_Core_DAO::VALUE_SEPARATOR, $defaultSettingString), '1'));
       $defaults['payment_processor'] = $paymentProcessorDefaultValue;
+      $fieldIdsToHide[] = 'payment_processor';
     }
+
+    $showCurrency = SettingsManager::SETTING_FIELDS['CURRENCY'];
+    $settings = [$showCurrency];
+    $settingValues = SettingsManager::getSettingsValue($settings);
+    if ($settingValues[$showCurrency] == 0) {
+      $fieldIdsToHide[] = 'currency';
+    }
+
+    $showPayLater = SettingsManager::SETTING_FIELDS['PAY_LATER_OPTION'];
+    $settings = [$showPayLater];
+    $settingValues = SettingsManager::getSettingsValue($settings);
+    if ($settingValues[$showPayLater] == 0) {
+      $fieldIdsToHide[] = 'is_pay_later';
+      $fieldIdsToHide[] = 'pay_later_text';
+      $fieldIdsToHide[] = 'pay_later_receipt';
+
+      // @note is_billing_required's parent tr in civicrm/templates/CRM/Event/Form/ManageEvent/Registration.tpl
+      // doesn't have any CSS class (CiviCRM bug) as a workaround we could use another selector
+      // $fieldIdsToHide[] = 'is_billing_required';
+      $this->hideElements('#payLaterOptions tr:nth-child(5)');
+
+      // @note We need this to hide description related is_pay_later placed outside the the parent tr in
+      // civicrm/templates/CRM/Event/Form/ManageEvent/Registration.tpl
+      $this->hideElements('#payLaterOptions');
+    }
+
+    $this->hideFields($fieldIdsToHide);
     $form->setDefaults($defaults);
   }
 

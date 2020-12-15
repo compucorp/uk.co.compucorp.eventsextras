@@ -24,7 +24,6 @@ class CRM_EventsExtras_Hook_BuildForm_EventInfo extends CRM_EventsExtras_Hook_Bu
     if (!$this->shouldHandle($formName, CRM_Event_Form_ManageEvent_EventInfo::class)) {
       return;
     }
-    $this->hideField($form);
     $this->buildForm($formName, $form);
   }
 
@@ -40,13 +39,39 @@ class CRM_EventsExtras_Hook_BuildForm_EventInfo extends CRM_EventsExtras_Hook_Bu
    */
   private function setDefaults(&$form) {
     $defaults = [];
-    $role = SettingsManager::SETTING_FIELDS['ROLES'];
+    $fieldIdsToHide = [];
+
+    $showRoles = SettingsManager::SETTING_FIELDS['ROLES'];
     $roleDefault = SettingsManager::SETTING_FIELDS['ROLES_DEFAULT'];
-    $settings = [$role, $roleDefault];
+    $settings = [$showRoles, $roleDefault];
     $settingValues = SettingsManager::getSettingsValue($settings);
-    if ($settingValues[$role] == 0) {
+    if ($settingValues[$showRoles] == 0) {
       $defaults['default_role_id'] = $settingValues[$roleDefault];
+      $fieldIdsToHide[] = 'default_role_id';
     }
+
+    $showParticipantListing = SettingsManager::SETTING_FIELDS['PARTICIPANT_LISTING'];
+    $settings = [$showParticipantListing];
+    $settingValues = SettingsManager::getSettingsValue($settings);
+    if ($settingValues[$showParticipantListing] == 0) {
+      $fieldIdsToHide[] = 'participant_listing_id';
+    }
+
+    $showIncludeMap = SettingsManager::SETTING_FIELDS['INCLUDE_MAP_LOCATION_EVENT'];
+    $settings = [$showIncludeMap];
+    $settingValues = SettingsManager::getSettingsValue($settings);
+    if ($settingValues[$showIncludeMap] == 0) {
+      $fieldIdsToHide[] = 'is_map';
+    }
+
+    $showPublicEvent = SettingsManager::SETTING_FIELDS['INCLUDE_MAP_PUBLIC_EVENT'];
+    $settings = [$showPublicEvent];
+    $settingValues = SettingsManager::getSettingsValue($settings);
+    if ($settingValues[$showPublicEvent] == 0) {
+      $fieldIdsToHide[] = 'is_public';
+    }
+
+    $this->hideFields($fieldIdsToHide);
     $form->setDefaults($defaults);
   }
 
