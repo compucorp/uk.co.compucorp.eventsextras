@@ -33,7 +33,7 @@ class CRM_EventsExtras_Hook_BuildForm_EventInfoTest extends BaseHeadlessTest {
     $eventInfoFormHook = new CRM_EventsExtras_Hook_BuildForm_EventInfo();
     $eventInfoFormHook->handle('CRM_Event_Form_ManageEvent_EventInfo', $eventInfoForm);
 
-    $this->assertEquals(3, $eventInfoForm->getElementValue('default_role_id')[0]);
+    $this->assertEquals(3, $eventInfoForm->_defaultValues['default_role_id']);
   }
 
 }

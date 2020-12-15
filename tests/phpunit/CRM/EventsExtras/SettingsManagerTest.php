@@ -66,7 +66,7 @@ class CRM_ManualDirectDebit_Common_SettingsManagerTest extends BaseHeadlessTest 
     $this->assertEquals(9, count($configFields));
     $configFields = $settingsManager->getConfigFields(SettingsManager::EVENT_REGISTRATION);
     $this->assertNotEmpty($configFields);
-    $this->assertEquals(8, count($configFields));
+    $this->assertEquals(9, count($configFields));
   }
 
 }
