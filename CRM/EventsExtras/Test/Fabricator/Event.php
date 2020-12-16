@@ -23,7 +23,6 @@ class CRM_EventsExtras_Test_Fabricator_Event extends BaseFabricator {
     'event_type_id'  => 3 ,
   ];
 
-
   /**
    * Fabricates an event  with the given parameters.
    *
