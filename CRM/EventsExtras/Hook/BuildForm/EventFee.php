@@ -68,16 +68,7 @@ class CRM_EventsExtras_Hook_BuildForm_EventFee extends CRM_EventsExtras_Hook_Bui
       $defaults['pay_later_receipt'] = $settingValues[$payLaterInstruction];
       $defaults['is_billing_required'] = $settingValues[$payLaterBillingAddress];
       $fieldIdsToHide[] = 'is_pay_later';
-      $fieldIdsToHide[] = 'pay_later_text';
-      $fieldIdsToHide[] = 'pay_later_receipt';
 
-      // @note is_billing_required's parent tr in civicrm/templates/CRM/Event/Form/ManageEvent/Registration.tpl
-      // doesn't have any CSS class (CiviCRM bug) as a workaround we could use another selector
-      // $fieldIdsToHide[] = 'is_billing_required';
-      $this->hideElements('#payLaterOptions tr:nth-child(5)');
-
-      // @note We need this to hide description related is_pay_later placed outside the the parent tr in
-      // civicrm/templates/CRM/Event/Form/ManageEvent/Registration.tpl
       $this->hideElements('#payLaterOptions');
     }
 
