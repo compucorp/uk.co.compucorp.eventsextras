@@ -33,7 +33,7 @@ class CRM_EventsExtras_Test_Fabricator_Event extends BaseFabricator {
   public static function fabricate(array $params = []) {
     $startDate = new DateTime();
 
-    $eventType = self::createEvenType();
+    $eventType = self::createEventType();
     $eventTypeId = $eventType['value'];
 
     $defaultParams = array_merge(static::$defaultParams, [
@@ -46,14 +46,10 @@ class CRM_EventsExtras_Test_Fabricator_Event extends BaseFabricator {
     return parent::fabricate($params);
   }
 
-  private static function createEvenType() {
+  private static function createEventType() {
     $result = civicrm_api3('OptionValue', 'create', [
       'option_group_id' => 'event_type',
       'name' => 'Conference',
-      'label' => 'Conference',
-      'weight' => 1,
-      'is_active' => 1,
-      'is_reserved' => 1,
     ]);
     $eventType = array_shift($result['values']);
 
