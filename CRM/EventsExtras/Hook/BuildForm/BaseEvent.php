@@ -71,7 +71,7 @@ abstract class CRM_EventsExtras_Hook_BuildForm_BaseEvent {
     }
     $selectors = implode(', ', $selectors);
 
-    $this->hideElements($selectors);
+    $this->hideElementBySelector($selectors);
   }
 
   /**
@@ -80,7 +80,7 @@ abstract class CRM_EventsExtras_Hook_BuildForm_BaseEvent {
    * @param string $selector
    *
    */
-  protected function hideElements($selector) {
+  protected function hideElementBySelector($selector) {
     CRM_Core_Resources::singleton()->addScript(
       "CRM.$(function($) {
         $('{$selector}').hide();

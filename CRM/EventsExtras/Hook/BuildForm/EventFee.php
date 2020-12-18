@@ -69,7 +69,7 @@ class CRM_EventsExtras_Hook_BuildForm_EventFee extends CRM_EventsExtras_Hook_Bui
       $defaults['is_billing_required'] = $settingValues[$payLaterBillingAddress];
       $fieldIdsToHide[] = 'is_pay_later';
 
-      $this->hideElements('#payLaterOptions');
+      $this->hideElementBySelector('#payLaterOptions');
     }
 
     $this->hideFields($fieldIdsToHide);
