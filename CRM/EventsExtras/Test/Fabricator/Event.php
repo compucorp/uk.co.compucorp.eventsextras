@@ -20,7 +20,6 @@ class CRM_EventsExtras_Test_Fabricator_Event extends BaseFabricator {
    */
   protected static $defaultParams = [
     'title'  => 'Event Sample' ,
-    'event_type_id'  => 3 ,
   ];
 
   /**
@@ -32,15 +31,33 @@ class CRM_EventsExtras_Test_Fabricator_Event extends BaseFabricator {
    * @throws \CiviCRM_API3_Exception
    */
   public static function fabricate(array $params = []) {
-    // start_date should always be the future
-    $start_date = new DateTime('tomorrow');
+    $startDate = new DateTime();
+
+    $eventType = self::createEvenType();
+    $eventTypeId = $eventType['value'];
 
     $defaultParams = array_merge(static::$defaultParams, [
-      'start_date' => $start_date->format('Ymd'),
+      'start_date' => $startDate->format('Ymd'),
+      'event_type_id'  => $eventTypeId,
     ]);
+
     $params = array_merge($defaultParams, $params);
 
     return parent::fabricate($params);
+  }
+
+  private static function createEvenType() {
+    $result = civicrm_api3('OptionValue', 'create', [
+      'option_group_id' => 'event_type',
+      'name' => 'Conference',
+      'label' => 'Conference',
+      'weight' => 1,
+      'is_active' => 1,
+      'is_reserved' => 1,
+    ]);
+    $eventType = array_shift($result['values']);
+
+    return $eventType;
   }
 
 }

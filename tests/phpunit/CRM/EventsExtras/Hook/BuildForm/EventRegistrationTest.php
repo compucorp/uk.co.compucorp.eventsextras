@@ -30,7 +30,6 @@ class CRM_EventsExtras_Hook_BuildForm_EventRegistrationTest extends BaseHeadless
   }
 
   public function testSetDefault() {
-
     SettingFabricator::fabricate([
       SettingsManager::SETTING_FIELDS['REGISTER_MULTIPLE_PARTICIPANTS'] => 0,
       SettingsManager::SETTING_FIELDS['REGISTER_MULTIPLE_PARTICIPANTS_DEFAULT'] => 1,
