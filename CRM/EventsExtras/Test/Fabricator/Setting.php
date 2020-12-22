@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class CRM_MventsExtras_Test_Fabricator_Setting
+ * Class CRM_EventsExtras_Test_Fabricator_Setting
  */
 class CRM_EventsExtras_Test_Fabricator_Setting {
 

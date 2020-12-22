@@ -24,7 +24,6 @@ class CRM_EventsExtras_Hook_BuildForm_EventFee extends CRM_EventsExtras_Hook_Bui
     if (!$this->shouldHandle($formName, CRM_Event_Form_ManageEvent_Fee::class)) {
       return;
     }
-    $this->hideField($form);
     $this->buildForm($formName, $form);
   }
 
@@ -34,15 +33,46 @@ class CRM_EventsExtras_Hook_BuildForm_EventFee extends CRM_EventsExtras_Hook_Bui
 
   private function setDefaults(&$form) {
     $defaults = [];
-    $paymentProcessor = SettingsManager::SETTING_FIELDS['PAYMENT_PROCESSOR_SELECTION'];
+    $fieldIdsToHide = [];
+
+    $showPaymentProcessor = SettingsManager::SETTING_FIELDS['PAYMENT_PROCESSOR_SELECTION'];
     $paymentProcessorDefault = SettingsManager::SETTING_FIELDS['PAYMENT_PROCESSOR_SELECTION_DEFAULT'];
-    $settings = [$paymentProcessor, $paymentProcessorDefault];
+    $settings = [$showPaymentProcessor, $paymentProcessorDefault];
     $settingValues = SettingsManager::getSettingsValue($settings);
-    if ($settingValues[$paymentProcessor] == 0) {
+    if ($settingValues[$showPaymentProcessor] == 0) {
       $defaultSettingString = implode(CRM_Core_DAO::VALUE_SEPARATOR, $settingValues[$paymentProcessorDefault]);
       $paymentProcessorDefaultValue = (array_fill_keys(explode(CRM_Core_DAO::VALUE_SEPARATOR, $defaultSettingString), '1'));
       $defaults['payment_processor'] = $paymentProcessorDefaultValue;
+      $fieldIdsToHide[] = 'payment_processor';
     }
+
+    $showCurrency = SettingsManager::SETTING_FIELDS['CURRENCY'];
+    $currencyDefault = SettingsManager::SETTING_FIELDS['CURRENCY_DEFAULT'];
+    $settings = [$showCurrency, $currencyDefault];
+    $settingValues = SettingsManager::getSettingsValue($settings);
+    if ($settingValues[$showCurrency] == 0) {
+      $defaults['currency'] = $settingValues[$currencyDefault];
+      $fieldIdsToHide[] = 'currency';
+    }
+
+    $showPayLater = SettingsManager::SETTING_FIELDS['PAY_LATER_OPTION'];
+    $payLaterDefault = SettingsManager::SETTING_FIELDS['PAY_LATER_OPTION_DEFAULT'];
+    $payLaterLabel = SettingsManager::SETTING_FIELDS['PAY_LATER_OPTION_DEFAULT_LABEL'];
+    $payLaterInstruction = SettingsManager::SETTING_FIELDS['PAY_LATER_OPTION_DEFAULT_LABEL_INSTRUCTION'];
+    $payLaterBillingAddress = SettingsManager::SETTING_FIELDS['PAY_LATER_OPTION_DEFAULT_BILLING_ADDRESS'];
+    $settings = [$showPayLater, $payLaterDefault, $payLaterLabel, $payLaterInstruction, $payLaterBillingAddress];
+    $settingValues = SettingsManager::getSettingsValue($settings);
+    if ($settingValues[$showPayLater] == 0) {
+      $defaults['is_pay_later'] = $settingValues[$payLaterDefault];
+      $defaults['pay_later_text'] = $settingValues[$payLaterLabel];
+      $defaults['pay_later_receipt'] = $settingValues[$payLaterInstruction];
+      $defaults['is_billing_required'] = $settingValues[$payLaterBillingAddress];
+      $fieldIdsToHide[] = 'is_pay_later';
+
+      $this->hideElementBySelector('#payLaterOptions');
+    }
+
+    $this->hideFields($fieldIdsToHide);
     $form->setDefaults($defaults);
   }
 

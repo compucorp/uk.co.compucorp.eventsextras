@@ -15,6 +15,16 @@ abstract class CRM_EventsExtras_Hook_BuildForm_BaseEvent {
   protected $eventTab;
 
   /**
+   * Event tab and class map
+   * @var eventTabAndClassMap
+   */
+  protected $eventTabAndClassMap = [
+    SettingsManager::EVENT_INFO => 'crm-event-manage-eventinfo',
+    SettingsManager::EVENT_FEE => 'crm-event-manage-fee',
+    SettingsManager::EVENT_REGISTRATION => 'crm-event-manage-registration',
+  ];
+
+  /**
    * Constractor for BuildForm class
    *
    * @param string $eventTab
@@ -22,7 +32,6 @@ abstract class CRM_EventsExtras_Hook_BuildForm_BaseEvent {
    */
   protected function __construct($eventTab) {
     $this->eventTab = $eventTab;
-    $this->addEventTabTemplate();
   }
 
   /**
@@ -49,32 +58,34 @@ abstract class CRM_EventsExtras_Hook_BuildForm_BaseEvent {
   }
 
   /**
-   * fuction to hide fields based on settings
+   * Hide fields on the Event Forms
    *
-   * @param array $form
+   * @param array $fieldIds
    *
    */
-  protected function hideField(&$form) {
-    $configFields = SettingsManager::getConfigFields($this->eventTab);
-    $settingsValue = SettingsManager::getSettingsValue();
-    $hiddenFields = [];
-
-    foreach ($configFields as $config) {
-      $configNameExists = isset($settingsValue[$config['name']]);
-      $configNameIsZero = $settingsValue[$config['name']] == 0;
-      $cssClassExists = array_key_exists('css_class', $config['extra_attributes']);
-      if ($configNameExists && $configNameIsZero && $cssClassExists) {
-        $hiddenFields[] = $config['extra_attributes']['css_class'];
-      }
+  protected function hideFields($fieldIds) {
+    $selectors = [];
+    foreach ($fieldIds as $fieldId) {
+      $class = $this->eventTabAndClassMap[$this->eventTab] . '-form-block-' . $fieldId;
+      $selectors[] = "tr[class={$class}]";
     }
-    $form->assign('hiddenCssClasses', $hiddenFields);
+    $selectors = implode(', ', $selectors);
+
+    $this->hideElementBySelector($selectors);
   }
 
-  private function addEventTabTemplate() {
-    $templatePath = E::path() . '/templates/CRM/EventsExtras/Form/EventTabs.tpl';
-    CRM_Core_Region::instance('page-body')->add([
-      'template' => "{$templatePath}",
-    ]);
+  /**
+   * Hide elements by CSS selector
+   *
+   * @param string $selector
+   *
+   */
+  protected function hideElementBySelector($selector) {
+    CRM_Core_Resources::singleton()->addScript(
+      "CRM.$(function($) {
+        $('{$selector}').hide();
+      });
+    ");
   }
 
 }

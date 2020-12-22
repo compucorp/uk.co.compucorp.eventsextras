@@ -20,7 +20,6 @@ return [
     'help_text' => '',
     'extra_attributes' => [
       'section' => SettingsManager::EVENT_TAB,
-      'css_class' => '',
     ],
   ],
   'eventsextras_tell_friend_tab' => [
@@ -37,7 +36,6 @@ return [
     'help_text' => '',
     'extra_attributes' => [
       'section' => SettingsManager::EVENT_TAB,
-      'css_class' => '',
     ],
   ],
   'eventsextras_pcp_tab' => [
@@ -54,7 +52,6 @@ return [
     'help_text' => '',
     'extra_attributes' => [
       'section' => SettingsManager::EVENT_TAB,
-      'css_class' => '',
     ],
   ],
   'eventsextras_roles' => [
@@ -71,7 +68,6 @@ return [
     'help_text' => '',
     'extra_attributes' => [
       'section' => SettingsManager::EVENT_INFO,
-      'css_class' => 'crm-event-manage-eventinfo-form-block-default_role_id',
     ],
   ],
   'eventsextras_participant_listing' => [
@@ -88,7 +84,6 @@ return [
     'help_text' => '',
     'extra_attributes' => [
       'section' => SettingsManager::EVENT_INFO,
-      'css_class' => 'crm-event-manage-eventinfo-form-block-participant_listing_id',
     ],
   ],
   'eventsextras_event_summary' => [
@@ -105,7 +100,6 @@ return [
     'help_text' => '',
     'extra_attributes' => [
       'section' => SettingsManager::EVENT_INFO,
-      'css_class' => 'crm-event-manage-eventinfo-form-block-summary',
     ],
   ],
   'eventsextras_event_description' => [
@@ -122,7 +116,6 @@ return [
     'help_text' => '',
     'extra_attributes' => [
       'section' => SettingsManager::EVENT_INFO,
-      'css_class' => 'crm-event-manage-eventinfo-form-block-description',
     ],
   ],
   'eventsextras_include_map_event_location' => [
@@ -139,7 +132,6 @@ return [
     'help_text' => '',
     'extra_attributes' => [
       'section' => SettingsManager::EVENT_INFO,
-      'css_class' => 'crm-event-manage-eventinfo-form-block-is_map',
     ],
   ],
   'eventsextras_public_event' => [
@@ -156,7 +148,6 @@ return [
     'help_text' => '',
     'extra_attributes' => [
       'section' => SettingsManager::EVENT_INFO,
-      'css_class' => 'crm-event-manage-eventinfo-form-block-is_public',
     ],
   ],
   'eventsextras_currency' => [
@@ -173,7 +164,6 @@ return [
     'help_text' => '',
     'extra_attributes' => [
       'section' => SettingsManager::EVENT_FEE,
-      'css_class' => 'crm-event-manage-fee-form-block-currency',
     ],
   ],
   'eventsextras_enable_pay_later_option' => [
@@ -190,7 +180,6 @@ return [
     'help_text' => '',
     'extra_attributes' => [
       'section' => SettingsManager::EVENT_FEE,
-      'css_class' => 'crm-event-manage-fee-form-block-is_pay_later',
     ],
   ],
   'eventsextras_payment_processor_selection' => [
@@ -207,7 +196,6 @@ return [
     'help_text' => '',
     'extra_attributes' => [
       'section' => SettingsManager::EVENT_FEE,
-      'css_class' => 'crm-event-manage-fee-form-block-payment_processor',
     ],
   ],
   'eventsextras_pending_participant_expiration' => [
@@ -224,7 +212,6 @@ return [
     'help_text' => '',
     'extra_attributes' => [
       'section' => SettingsManager::EVENT_REGISTRATION,
-      'css_class' => 'crm-event-manage-registration-form-block-expiration_time',
     ],
   ],
   'eventsextras_allow_self_service' => [
@@ -241,7 +228,6 @@ return [
     'help_text' => '',
     'extra_attributes' => [
       'section' => SettingsManager::EVENT_REGISTRATION,
-      'css_class' => 'crm-event-manage-registration-form-block-selfcancelxfer',
     ],
   ],
   'eventsextras_register_multiple_participants' => [
@@ -258,7 +244,6 @@ return [
     'help_text' => '',
     'extra_attributes' => [
       'section' => SettingsManager::EVENT_REGISTRATION,
-      'css_class' => 'crm-event-manage-registration-form-block-is_multiple_registrations',
     ],
   ],
 ];

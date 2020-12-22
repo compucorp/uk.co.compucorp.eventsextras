@@ -45,6 +45,7 @@ class CRM_EventsExtras_SettingsManager {
     'REGISTER_MULTIPLE_PARTICIPANTS' => 'eventsextras_register_multiple_participants',
     'REGISTER_MULTIPLE_PARTICIPANTS_DEFAULT' => 'eventsextras_register_multiple_participants_default',
     'REGISTER_MULTIPLE_PARTICIPANTS_DEFAULT_MAXIMUM_PARTICIPANT' => 'eventsextras_register_multiple_participants_default_maximum_participant',
+    'REGISTER_MULTIPLE_PARTICIPANTS_ALLOW_SAME_PARTICIPANT_EMAILS_DEFAULT' => 'eventsextras_register_multiple_participants_allow_same_participant_emails_default',
   ];
 
   /**
