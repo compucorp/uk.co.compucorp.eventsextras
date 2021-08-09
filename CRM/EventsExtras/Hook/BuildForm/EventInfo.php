@@ -77,6 +77,18 @@ class CRM_EventsExtras_Hook_BuildForm_EventInfo extends CRM_EventsExtras_Hook_Bu
       $fieldIdsToHide[] = 'is_public';
     }
 
+    $showEventDescription = SettingsManager::SETTING_FIELDS['EVENT_DESCRIPTION'];
+    $settingValues = SettingsManager::getSettingsValue($showEventDescription);
+    if ($settingValues[$showEventDescription] == 0) {
+      $fieldIdsToHide[] = 'description';
+    }
+
+    $showEventSummary = SettingsManager::SETTING_FIELDS['PARTICIPANT_SUMMARY'];
+    $settingValues = SettingsManager::getSettingsValue($showEventSummary);
+    if ($settingValues[$showEventSummary] == 0) {
+      $fieldIdsToHide[] = 'summary';
+    }
+
     $this->hideFields($fieldIdsToHide);
     $form->setDefaults($defaults);
   }
