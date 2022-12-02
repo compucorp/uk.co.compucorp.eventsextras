@@ -249,7 +249,8 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
     }
 
     $defaults['eventsextras_payment_processor_selection_default'] =
-      array_fill_keys($defaults['eventsextras_payment_processor_selection_default'], '1');
+      is_array($defaults['eventsextras_payment_processor_selection_default']) ?
+      array_fill_keys($defaults['eventsextras_payment_processor_selection_default'], '1') : NULL;
 
     return $defaults;
   }
