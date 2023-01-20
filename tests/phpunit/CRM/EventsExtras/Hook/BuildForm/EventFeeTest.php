@@ -18,7 +18,7 @@ class CRM_EventsExtras_Hook_BuildForm_EventFeeTest extends BaseHeadlessTest {
    */
   private $eventFeeForm;
 
-  public function setUp() {
+  public function setUp(): void {
     $formController = new CRM_Core_Controller();
     $this->eventFeeForm = new CRM_Event_Form_ManageEvent_Fee();
     $this->eventFeeForm->controller = $formController;
@@ -26,7 +26,7 @@ class CRM_EventsExtras_Hook_BuildForm_EventFeeTest extends BaseHeadlessTest {
   }
 
   public function testSetDefault() {
-    $this->assertNull($this->eventFeeForm->getElementValue('payment_processor')[0]);
+    $this->assertEmpty($this->eventFeeForm->getElementValue('payment_processor'));
 
     SettingFabricator::fabricate([
       SettingsManager::SETTING_FIELDS['PAYMENT_PROCESSOR_SELECTION'] => 0,

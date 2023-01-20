@@ -23,7 +23,7 @@ class CRM_EventsExtras_Hook_BuildForm_EventInfoTest extends BaseHeadlessTest {
     $eventInfoForm->controller = $formController;
     $eventInfoForm->buildForm();
 
-    $this->assertNull($eventInfoForm->getElementValue('default_role_id')[0]);
+    $this->assertEmpty($eventInfoForm->getElementValue('default_role_id'));
 
     SettingFabricator::fabricate([
       SettingsManager::SETTING_FIELDS['ROLES'] => 0,
