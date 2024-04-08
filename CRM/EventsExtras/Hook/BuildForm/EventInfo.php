@@ -48,6 +48,7 @@ class CRM_EventsExtras_Hook_BuildForm_EventInfo extends CRM_EventsExtras_Hook_Bu
     if ($settingValues[$showRoles] == 0) {
       $defaults['default_role_id'] = $settingValues[$roleDefault];
       $fieldIdsToHide[] = 'default_role_id';
+      $form->getElement('default_role_id')->setSelected($settingValues[$roleDefault]);
     }
 
     $showParticipantListing = SettingsManager::SETTING_FIELDS['PARTICIPANT_LISTING'];
@@ -57,6 +58,7 @@ class CRM_EventsExtras_Hook_BuildForm_EventInfo extends CRM_EventsExtras_Hook_Bu
     if ($settingValues[$showParticipantListing] == 0) {
       $defaults['participant_listing_id'] = $settingValues[$participantListingDefault];
       $fieldIdsToHide[] = 'participant_listing_id';
+      $form->getElement('participant_listing_id')->setSelected($settingValues[$participantListingDefault]);
     }
 
     $showIncludeMap = SettingsManager::SETTING_FIELDS['INCLUDE_MAP_LOCATION_EVENT'];
