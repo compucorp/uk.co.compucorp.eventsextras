@@ -84,6 +84,7 @@ abstract class CRM_EventsExtras_Hook_BuildForm_BaseEvent {
     CRM_Core_Resources::singleton()->addScript(
       "CRM.$(function($) {
         $('{$selector}').hide();
+        $('{$selector} .required').removeClass('required');
       });
     ");
   }
