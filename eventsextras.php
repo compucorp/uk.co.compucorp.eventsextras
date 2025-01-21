@@ -77,3 +77,16 @@ function eventsextras_civicrm_navigationMenu(&$menu) {
   ));
   _eventsextras_civix_navigationMenu($menu);
 }
+
+/**
+ * Implements hook_civicrm_alterMailParams().
+ */
+function eventsextras_civicrm_alterMailParams(&$params, $context) {
+  $hooks = [CRM_EventsExtras_Hook_AlterMailParams_EventRegistrationConfirmation::class];
+
+  foreach ($hooks as $hook) {
+    if ($hook::shouldHandle($params, $context)) {
+      (new $hook())->handle($params, $context);
+    }
+  }
+}
