@@ -208,6 +208,7 @@ class CRM_EventsExtras_Form_Settings extends CRM_Core_Form {
         'api.OptionValue.get' => [
           '
           option_group_id' => 'id',
+          'is_active' => 1,
           'options' => [
             'limit' => 0,
           ],
