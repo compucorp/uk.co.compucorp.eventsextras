@@ -14,6 +14,7 @@ function eventsextras_civicrm_buildForm($formName, &$form) {
     new CRM_EventsExtras_Hook_BuildForm_EventInfo(),
     new CRM_EventsExtras_Hook_BuildForm_EventFee(),
     new CRM_EventsExtras_Hook_BuildForm_EventRegistration(),
+    new CRM_EventsExtras_Hook_BuildForm_EventRegistrationThankYou(),
   ];
   foreach ($listeners as $currentListener) {
     $currentListener->handle($formName, $form);
@@ -41,6 +42,18 @@ function eventsextras_civicrm_pre($op, $objectName, $id, &$params) {
  */
 function eventsextras_civicrm_config(&$config) {
   _eventsextras_civix_civicrm_config($config);
+
+  // Guard against double-registration if hook_civicrm_config fires more than
+  // once in a request (e.g. after a cache rebuild).
+  if (isset(Civi::$statics[__FUNCTION__])) {
+    return;
+  }
+  Civi::$statics[__FUNCTION__] = 1;
+
+  Civi::dispatcher()->addListener(
+    'civi.invoke.auth',
+    ['CRM_EventsExtras_Service_ThankYouPageRedirect', 'redirectIfNeeded']
+  );
 }
 
 /**
